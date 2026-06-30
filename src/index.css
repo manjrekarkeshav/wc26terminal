@@ -426,9 +426,41 @@ html.light .foot { background:#efe8d6; }
   .live-grid { grid-template-columns:1fr; }
   .status { font-size:.66rem; gap:.7rem; }
 }
+
+/* Tablet / large phone: keep the in-page nav usable */
+@media (max-width:760px) {
+  html, body { max-width:100%; overflow-x:hidden; }
+  .topbar { flex-wrap:wrap; gap:.45rem .8rem; padding:.5rem .8rem; }
+  .brand { font-size:.95rem; }
+  .status { margin-left:auto; gap:.7rem; }
+  /* nav becomes a full-width horizontal scroll strip under the brand */
+  .nav {
+    order:3; width:100%; flex-wrap:nowrap; overflow-x:auto;
+    gap:.15rem; padding-bottom:.1rem; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .nav::-webkit-scrollbar { display:none; }
+  .nav a { white-space:nowrap; flex:none; }
+}
+
+/* Phones */
 @media (max-width:640px) {
-  .up-row { grid-template-columns:1fr auto; row-gap:.3rem; }
-  .up-cd, .round-pill, .up-wp { display:none; }
+  .section-head { padding:1rem .85rem .2rem; flex-wrap:wrap; }
+  .stack, .live-grid, .groups, .bracket-wrap, .trace-wrap { padding-left:12px; padding-right:12px; }
+
+  /* Upcoming: stack each fixture vertically (time → match → win bar → venue) */
+  .up-row { grid-template-columns:1fr; gap:.3rem; padding:.7rem .85rem; }
+  .up-cd, .round-pill { display:none; }
+  .up-time { font-size:.74rem; color:var(--muted); }
+  .up-match { white-space:normal; }
+  .up-wp { justify-content:flex-start; }
+
+  /* one card per row everywhere a min-width would otherwise overflow */
+  .results-grid, .sa-grid, .groups { grid-template-columns:1fr; }
+
+  /* live card: a touch tighter */
+  .lc-name, .lc-head .grp { font-size:.95rem; }
+  .lc-head .grp { font-size:.6rem; }
 }
 
 /* ─── Reduced motion ─────────────────────────────────────────── */
