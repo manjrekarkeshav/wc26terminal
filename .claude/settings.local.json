@@ -46,7 +46,21 @@
       "Bash(dig +short AAAA krmank.com)",
       "Bash(dig +short www.krmank.com)",
       "Bash(dig +short MX krmank.com)",
-      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Improve mobile layout: responsive topbar, stacked upcoming rows, single-column grids *)"
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Improve mobile layout: responsive topbar, stacked upcoming rows, single-column grids *)",
+      "Bash(python3 -c 'import cairosvg; print\\(\"yes\"\\)')",
+      "Bash(echo \"python3 cairosvg: $\\(python3 -c 'import cairosvg; print\\(\"yes\"\\)' 2>/dev/null || echo no\\)\")",
+      "Bash(node -e 'require\\(\"sharp\"\\);console.log\\(\"yes\"\\)')",
+      "Bash(echo \"node sharp: $\\(node -e 'require\\(\"sharp\"\\);console.log\\(\"yes\"\\)' 2>/dev/null || echo no\\)\")",
+      "Bash(qlmanage -t -s 1200 -o . og.svg)",
+      "Bash(sips -g pixelWidth -g pixelHeight og.svg.png)",
+      "Bash(sips -c 630 1200 og.svg.png --out og.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight og.png)",
+      "Bash(rm -f og2.svg.png)",
+      "Bash(qlmanage -t -s 1200 -o . og2.svg)",
+      "Bash(sips -c 630 1200 og2.svg.png --out og.png)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(awk '{print \"dist/og.png:\", $5, \"bytes\"}')",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Add README and Open Graph preview image *)"
     ]
   }
 }
