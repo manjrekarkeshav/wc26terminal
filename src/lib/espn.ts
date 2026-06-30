@@ -193,6 +193,17 @@ export function normalizeEvent(event: Record<string, unknown>): Match {
 
   const status = normalizeStatus(event);
 
+  // Winner: trust ESPN's flag first (handles penalties), else regulation score, else shootout.
+  let winner: 'home' | 'away' | null = null;
+  if (status === 'post') {
+    if (homeComp.winner === true) winner = 'home';
+    else if (awayComp.winner === true) winner = 'away';
+    else if (homeScore != null && awayScore != null && homeScore !== awayScore)
+      winner = homeScore > awayScore ? 'home' : 'away';
+    else if (homeSO != null && awaySO != null && homeSO !== awaySO)
+      winner = homeSO > awaySO ? 'home' : 'away';
+  }
+
   return {
     id: String(event.id ?? ''),
     status,
@@ -209,6 +220,7 @@ export function normalizeEvent(event: Record<string, unknown>): Match {
     cards: status !== 'pre' ? extractCards(event) : [],
     homeShootout: status === 'post' ? homeSO : null,
     awayShootout: status === 'post' ? awaySO : null,
+    winner,
   };
 }
 

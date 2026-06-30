@@ -258,9 +258,9 @@ html.light .show-all { background:#efe8d6; }
 }
 .yc {
   display:inline-flex; align-items:center; justify-content:center;
-  min-width:13px; height:18px; padding:0 .2rem;
-  background:var(--yellow); color:#1a1500; border-radius:2px;
-  font-size:.62rem; font-weight:700; line-height:1; cursor:default;
+  min-width:9px; height:14px; padding:0 .12rem;
+  background:var(--yellow); color:#1a1500; border-radius:1.5px;
+  font-size:.52rem; font-weight:700; font-style:italic; line-height:1; cursor:default;
 }
 
 /* ─── Hover tooltip ──────────────────────────────────────────── */

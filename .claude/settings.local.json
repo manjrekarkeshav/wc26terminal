@@ -69,7 +69,9 @@
       "Bash(sips -g pixelWidth -g pixelHeight /private/tmp/claude-501/-Users-krmank-Documents-WC26Dash/b538d1f7-2c5c-4ea7-9ae0-ff73d8b54405/scratchpad/overview.png)",
       "Bash(node ./_shoot.mjs ./public/overview.png)",
       "Bash(sips -g pixelWidth -g pixelHeight ./public/overview.png)",
-      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Use real dashboard screenshot as README overview image *)"
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Use real dashboard screenshot as README overview image *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Add MIT license *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Bracket: drop subtitle, green penalty-shootout winners; smaller italic yellow-card badge *)"
     ]
   }
 }

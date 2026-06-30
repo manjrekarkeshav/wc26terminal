@@ -41,6 +41,8 @@ export interface Match {
   /** Penalty-shootout goals per side, null when the match wasn't decided on penalties */
   homeShootout: number | null;
   awayShootout: number | null;
+  /** Which side won (knockouts) — handles penalty shootouts. null for draws/unfinished. */
+  winner: 'home' | 'away' | null;
 }
 
 export interface GroupTeamRow {

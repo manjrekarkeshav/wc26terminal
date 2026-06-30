@@ -39,7 +39,6 @@ export function Bracket({ matches, standings }: { matches: Match[]; standings: G
     <>
       <div className="section-head" id="bracket">
         <h2>Knockout bracket</h2>
-        <span className="sub">as it stands · current top 2 per group + best-8 thirds</span>
       </div>
       <div className="bracket-wrap">
         <div className="bracket-cols">

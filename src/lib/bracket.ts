@@ -102,11 +102,11 @@ function buildFromEspn(matches: Match[]): BracketRoundView[] {
           date: fmtDate(m.kickoffUtc),
           home: slotFromCompetitor(
             { flag: m.homeTeam.flag, name: m.homeTeam.name, abbr: m.homeTeam.abbreviation, fifaRank: rankFor(m.homeTeam.abbreviation) },
-            hs, m.status, m.status === 'post' && hs > as,
+            hs, m.status, m.winner === 'home',
           ),
           away: slotFromCompetitor(
             { flag: m.awayTeam.flag, name: m.awayTeam.name, abbr: m.awayTeam.abbreviation, fifaRank: rankFor(m.awayTeam.abbreviation) },
-            as, m.status, m.status === 'post' && as > hs,
+            as, m.status, m.winner === 'away',
           ),
         };
       });
