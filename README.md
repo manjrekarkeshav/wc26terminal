@@ -51,6 +51,10 @@ npm run build    # type-check + production build to dist/
 
 Pushed to `main` → **Cloudflare** auto-builds (`npm run build`) and deploys the Worker (`npx wrangler deploy`). Static assets come from `dist/`; the Worker handles `/api/*`.
 
+## License
+
+[MIT](LICENSE) © Keshav Manjrekar
+
 ---
 
 Made by **Keshav Manjrekar** · [krmank.com](https://www.krmank.com)
