@@ -4,7 +4,7 @@ A live, information-dense **2026 FIFA World Cup dashboard** with a Bloomberg-ter
 
 **Live:** [wc26.krmank.com](https://wc26.krmank.com)
 
-![WC26 Terminal](public/og.png)
+![WC26 Terminal dashboard](public/overview.png)
 
 ---
 
