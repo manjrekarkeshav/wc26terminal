@@ -54,7 +54,7 @@ export default function App() {
             <span className="k">REFRESH</span> 10s ·{' '}
             <span className="k">TZ</span> LOCAL
           </span>
-          <span>WC26DASH · BETA</span>
+          <span>WC26DASH</span>
         </footer>
       </FilterProvider>
     </ThemeProvider>
