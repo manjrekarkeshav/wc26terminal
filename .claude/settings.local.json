@@ -39,7 +39,8 @@
       "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://wc26terminal.manjrekarkeshav14.workers.dev/api/data)",
       "Bash(curl -s https://wc26terminal.manjrekarkeshav14.workers.dev/api/data)",
       "Bash(npx --yes wrangler@latest deploy --dry-run)",
-      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Convert to Cloudflare Worker with static assets + /api routes *)"
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Convert to Cloudflare Worker with static assets + /api routes *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Run Worker first for /api/* so the API routes aren'\\\\''t shadowed by SPA fallback *)"
     ]
   }
 }
