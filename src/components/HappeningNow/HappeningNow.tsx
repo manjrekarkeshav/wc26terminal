@@ -1,6 +1,7 @@
 import type { Match } from '../../lib/types';
 import type { WinProbMap } from '../../lib/winprob';
 import { LiveMatchCard } from './LiveMatchCard';
+import { Countdown } from '../Upcoming/Countdown';
 
 const SOON_WINDOW_MS = 30 * 60 * 1000; // show fixtures starting within 30 minutes
 
@@ -17,6 +18,11 @@ export function HappeningNow({ matches, pm }: { matches: Match[]; pm: WinProbMap
       return false;
     })
     .sort((a, b) => new Date(a.kickoffUtc).getTime() - new Date(b.kickoffUtc).getTime());
+
+  // Next upcoming fixture (for the empty-state countdown)
+  const nextMatch = matches
+    .filter((m) => m.status === 'pre' && new Date(m.kickoffUtc).getTime() > now)
+    .sort((a, b) => new Date(a.kickoffUtc).getTime() - new Date(b.kickoffUtc).getTime())[0];
 
   return (
     <>
@@ -35,8 +41,17 @@ export function HappeningNow({ matches, pm }: { matches: Match[]; pm: WinProbMap
       ) : (
         <div className="stack">
           <div className="empty-card">
-            ⚽ No matches are live right now — the next kickoff is in{' '}
-            <b>Upcoming</b> below.
+            {nextMatch ? (
+              <>
+                ⚽ No matches are live right now — next kickoff in{' '}
+                <b>
+                  <Countdown kickoffUtc={nextMatch.kickoffUtc} />
+                </b>{' '}
+                ({nextMatch.homeTeam.name} v {nextMatch.awayTeam.name})
+              </>
+            ) : (
+              <>⚽ No matches are live right now.</>
+            )}
           </div>
         </div>
       )}
