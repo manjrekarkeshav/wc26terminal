@@ -31,7 +31,15 @@
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Pin Node 22 for Cloudflare Pages build *)",
       "Bash(echo \"TSC EXIT: $?\")",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Add FIFA ranks to bracket/upcoming/results + penalties tag *)",
-      "Bash(git remote *)"
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(git rm *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Remove wrangler.toml so Cloudflare deploys as Pages, not Workers *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://wc26terminal.manjrekarkeshav14.workers.dev/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://wc26terminal.manjrekarkeshav14.workers.dev/api/data)",
+      "Bash(curl -s https://wc26terminal.manjrekarkeshav14.workers.dev/api/data)",
+      "Bash(npx --yes wrangler@latest deploy --dry-run)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Convert to Cloudflare Worker with static assets + /api routes *)"
     ]
   }
 }

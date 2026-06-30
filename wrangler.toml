@@ -1,0 +1,10 @@
+name = "wc26terminal"
+main = "worker/index.ts"
+compatibility_date = "2024-09-23"
+
+# Serve the built SPA from dist/. The Worker runs for requests that don't match a
+# static asset (e.g. /api/*); everything else is served straight from dist/.
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
