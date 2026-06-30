@@ -10,7 +10,7 @@ const SECTIONS = [
   { id: 'groups', label: 'Groups' },
 ];
 
-export function TopBar({ isLive, lastUpdated }: { isLive: boolean; lastUpdated: number | null }) {
+export function TopBar({ isLive }: { isLive: boolean }) {
   const { theme, setTheme } = useTheme();
   const [activeId, setActiveId] = useState('live');
 
@@ -28,10 +28,6 @@ export function TopBar({ isLive, lastUpdated }: { isLive: boolean; lastUpdated: 
     handler();
     return () => window.removeEventListener('scroll', handler);
   }, []);
-
-  const updatedAgo = lastUpdated
-    ? Math.round((Date.now() - lastUpdated) / 1000)
-    : null;
 
   return (
     <header className="topbar">
@@ -55,9 +51,6 @@ export function TopBar({ isLive, lastUpdated }: { isLive: boolean; lastUpdated: 
             <span className="dot" aria-hidden="true" style={{ background: 'var(--green)', boxShadow: '0 0 8px var(--green)' }} />
             <b style={{ color: 'var(--green)' }}>LIVE</b>
           </span>
-        )}
-        {updatedAgo !== null && (
-          <span className="upd">upd {updatedAgo}s ago</span>
         )}
         <span className="theme-ctrl">
           🎨

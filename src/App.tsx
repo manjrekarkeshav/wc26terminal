@@ -31,7 +31,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <FilterProvider>
-        <TopBar isLive={isLive} lastUpdated={data?.fetchedAt ?? null} />
+        <TopBar isLive={isLive} />
 
         {isStale && <StaleBanner />}
 
