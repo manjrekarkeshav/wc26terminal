@@ -53,7 +53,6 @@ export function TopBar({ isLive }: { isLive: boolean }) {
           </span>
         )}
         <span className="theme-ctrl">
-          🎨
           <select
             value={theme}
             onChange={(e) => setTheme(e.target.value as 'dark' | 'light')}
