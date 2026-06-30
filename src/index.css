@@ -245,10 +245,16 @@ html.light .show-all { background:#efe8d6; }
 .rc-side.away { flex-direction:row-reverse; }
 .rc-abbr { font-weight:700; letter-spacing:.03em; }
 .rc-side.away .rc-abbr { color:var(--muted); }
+.rc-mid { display:flex; flex-direction:column; align-items:center; gap:.25rem; }
 .rc-score {
   background:var(--panel2); border:1px solid var(--line); border-radius:6px;
   padding:.28rem .8rem; font-weight:700; font-variant-numeric:tabular-nums;
   white-space:nowrap; letter-spacing:.06em;
+}
+.pen-tag {
+  font-size:.5rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--blue); border:1px solid var(--blue); border-radius:3px;
+  padding:.05rem .3rem; background:rgba(74,158,255,.12); line-height:1.2;
 }
 .yc {
   display:inline-flex; align-items:center; justify-content:center;

@@ -1,4 +1,5 @@
 import type { Match } from '../../lib/types';
+import { rankFor } from '../../lib/rankings';
 import { Tooltip } from '../Tooltip/Tooltip';
 
 export function ResultRow({ match }: { match: Match }) {
@@ -29,6 +30,7 @@ export function ResultRow({ match }: { match: Match }) {
       <span className="rc-side">
         <span className="fl">{match.homeTeam.flag}</span>
         <span className="rc-abbr">{homeAbbr}</span>
+        {rankFor(homeAbbr) != null && <sup>{rankFor(homeAbbr)}</sup>}
         {homeCards.length > 0 && (
           <Tooltip lines={cardLines(homeCards)}>
             <span className="yc">{homeCards.length}</span>
@@ -36,13 +38,17 @@ export function ResultRow({ match }: { match: Match }) {
         )}
       </span>
 
-      <Tooltip lines={goalLines} align="left">
-        <span className="rc-score">{homeText} – {awayText}</span>
-      </Tooltip>
+      <span className="rc-mid">
+        <Tooltip lines={goalLines} align="left">
+          <span className="rc-score">{homeText} – {awayText}</span>
+        </Tooltip>
+        {hasShootout && <span className="pen-tag">Penalties</span>}
+      </span>
 
       <span className="rc-side away">
         <span className="fl">{match.awayTeam.flag}</span>
         <span className="rc-abbr">{awayAbbr}</span>
+        {rankFor(awayAbbr) != null && <sup>{rankFor(awayAbbr)}</sup>}
         {awayCards.length > 0 && (
           <Tooltip lines={cardLines(awayCards)} align="right">
             <span className="yc">{awayCards.length}</span>

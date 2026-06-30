@@ -1,5 +1,6 @@
 import type { Match } from '../../lib/types';
 import type { WinProbMap } from '../../lib/winprob';
+import { rankFor } from '../../lib/rankings';
 import { UpcomingWinProb } from '../WinProbBar/WinProbBar';
 import { Countdown } from './Countdown';
 
@@ -20,9 +21,11 @@ export function FixtureRow({ match, pm }: { match: Match; pm: WinProbMap | null 
       <span className="up-match">
         <span className="fl">{match.homeTeam.flag}</span>
         {match.homeTeam.name}
+        {rankFor(match.homeTeam.abbreviation) != null && <sup>{rankFor(match.homeTeam.abbreviation)}</sup>}
         <span className="x">v</span>
         <span className="fl">{match.awayTeam.flag}</span>
         {match.awayTeam.name}
+        {rankFor(match.awayTeam.abbreviation) != null && <sup>{rankFor(match.awayTeam.abbreviation)}</sup>}
       </span>
       <UpcomingWinProb match={match} pm={pm} />
       <span className="round-pill">{pill}</span>

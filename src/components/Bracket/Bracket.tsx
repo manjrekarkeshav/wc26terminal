@@ -18,7 +18,10 @@ function TeamLine({ slot }: { slot: BracketSlot }) {
   return (
     <div className={`mteam${slot.advanced ? ' adv' : ''}`}>
       <span className="fl">{slot.team.flag}</span>
-      <span className="nm">{slot.team.name}</span>
+      <span className="nm">
+        {slot.team.name}
+        {slot.team.fifaRank != null && <sup>{slot.team.fifaRank}</sup>}
+      </span>
       {slot.live && <span className="bk-live" title="Live" />}
       {slot.locked && <span className="lk">🔒</span>}
       {!slot.locked && slot.seed && <span className="seed">{slot.seed}</span>}

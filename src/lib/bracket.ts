@@ -11,11 +11,13 @@
  */
 
 import type { GroupStanding, GroupTeamRow, Match } from './types';
+import { rankFor } from './rankings';
 
 export interface BracketTeam {
   flag: string;
   name: string;
   abbr: string;
+  fifaRank: number | null;
 }
 
 export interface BracketSlot {
@@ -99,11 +101,11 @@ function buildFromEspn(matches: Match[]): BracketRoundView[] {
           venue: m.venue,
           date: fmtDate(m.kickoffUtc),
           home: slotFromCompetitor(
-            { flag: m.homeTeam.flag, name: m.homeTeam.name, abbr: m.homeTeam.abbreviation },
+            { flag: m.homeTeam.flag, name: m.homeTeam.name, abbr: m.homeTeam.abbreviation, fifaRank: rankFor(m.homeTeam.abbreviation) },
             hs, m.status, m.status === 'post' && hs > as,
           ),
           away: slotFromCompetitor(
-            { flag: m.awayTeam.flag, name: m.awayTeam.name, abbr: m.awayTeam.abbreviation },
+            { flag: m.awayTeam.flag, name: m.awayTeam.name, abbr: m.awayTeam.abbreviation, fifaRank: rankFor(m.awayTeam.abbreviation) },
             as, m.status, m.status === 'post' && as > hs,
           ),
         };
@@ -162,7 +164,12 @@ const R32: R32Template[] = [
 ];
 
 function teamOf(row: GroupTeamRow): BracketTeam {
-  return { flag: row.team.flag, name: row.team.name, abbr: row.team.abbreviation };
+  return {
+    flag: row.team.flag,
+    name: row.team.name,
+    abbr: row.team.abbreviation,
+    fifaRank: row.fifaRank ?? rankFor(row.team.abbreviation),
+  };
 }
 
 function rankThirds(thirds: { g: string; row: GroupTeamRow }[]) {
