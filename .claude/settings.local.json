@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(mv wc26dash/* .)",
+      "Bash(mv wc26dash/.* .)",
+      "Bash(ls wc26dash/ 2>/dev/null && mv wc26dash/.gitignore . 2>/dev/null; mv wc26dash/* . 2>/dev/null; rmdir wc26dash 2>/dev/null; ls)",
+      "Bash(npm install *)",
+      "Bash(npx tailwindcss *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(mkdir -p /Users/krmank/Documents/WC26Dash/.claude)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard\")",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260628&limit=200\")",
+      "WebSearch",
+      "WebFetch(domain:en.wikipedia.org)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200\")",
+      "Bash(npx tsc *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(curl -s \"https://gamma-api.polymarket.com/events?closed=false&limit=3&tag=world-cup\" -H \"Accept: application/json\")",
+      "Bash(curl -s \"https://gamma-api.polymarket.com/markets?closed=false&limit=2&active=true\" -H \"Accept: application/json\")",
+      "Bash(python3 -m json.tool)",
+      "Bash(lsof -ti:5173)",
+      "Bash(gh auth *)",
+      "Bash(npm -v)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Initial commit: WC26 Terminal — live World Cup dashboard *)"
+    ]
+  }
+}

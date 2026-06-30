@@ -1,0 +1,77 @@
+{
+  "events": [
+    {
+      "id": "s1",
+      "date": "2026-06-28T19:00:00Z",
+      "status": { "type": { "state": "in" }, "displayClock": "67:00", "period": 1 },
+      "competitions": [{
+        "notes": [{ "headline": "Grp J" }],
+        "venue": { "fullName": "SoFi Stadium", "address": { "city": "Inglewood", "state": "CA" } },
+        "competitors": [
+          { "homeAway": "home", "score": "2", "team": { "id": "t1", "displayName": "Argentina", "abbreviation": "ARG" } },
+          { "homeAway": "away", "score": "0", "team": { "id": "t2", "displayName": "Jordan", "abbreviation": "JOR" } }
+        ],
+        "details": [
+          { "type": { "id": "57" }, "clock": { "displayValue": "23" }, "team": { "abbreviation": "ARG" }, "athletesInvolved": [{ "displayName": "L. Messi" }] },
+          { "type": { "id": "57" }, "clock": { "displayValue": "54" }, "team": { "abbreviation": "ARG" }, "athletesInvolved": [{ "displayName": "J. Álvarez" }] }
+        ]
+      }]
+    },
+    {
+      "id": "s2",
+      "date": "2026-06-29T00:00:00Z",
+      "status": { "type": { "state": "pre" } },
+      "competitions": [{
+        "notes": [{ "headline": "Grp C" }],
+        "venue": { "fullName": "Levi's Stadium", "address": { "city": "Santa Clara", "state": "CA" } },
+        "competitors": [
+          { "homeAway": "home", "score": "0", "team": { "id": "t3", "displayName": "Brazil", "abbreviation": "BRA" } },
+          { "homeAway": "away", "score": "0", "team": { "id": "t4", "displayName": "Morocco", "abbreviation": "MAR" } }
+        ],
+        "details": []
+      }]
+    },
+    {
+      "id": "s3",
+      "date": "2026-06-29T20:00:00Z",
+      "status": { "type": { "state": "pre" } },
+      "competitions": [{
+        "notes": [{ "headline": "Grp L" }],
+        "venue": { "fullName": "MetLife Stadium", "address": { "city": "East Rutherford", "state": "NJ" } },
+        "competitors": [
+          { "homeAway": "home", "score": "0", "team": { "id": "t5", "displayName": "England", "abbreviation": "ENG" } },
+          { "homeAway": "away", "score": "0", "team": { "id": "t6", "displayName": "Senegal", "abbreviation": "SEN" } }
+        ],
+        "details": []
+      }]
+    },
+    {
+      "id": "s4",
+      "date": "2026-06-28T13:00:00Z",
+      "status": { "type": { "state": "post" } },
+      "competitions": [{
+        "notes": [{ "headline": "Grp F" }],
+        "venue": { "fullName": "NRG Stadium", "address": { "city": "Houston", "state": "TX" } },
+        "competitors": [
+          { "homeAway": "home", "score": "3", "team": { "id": "t7", "displayName": "Netherlands", "abbreviation": "NED" } },
+          { "homeAway": "away", "score": "1", "team": { "id": "t8", "displayName": "Ecuador", "abbreviation": "ECU" } }
+        ],
+        "details": []
+      }]
+    },
+    {
+      "id": "s5",
+      "date": "2026-06-28T16:00:00Z",
+      "status": { "type": { "state": "post" } },
+      "competitions": [{
+        "notes": [{ "headline": "Grp G" }],
+        "venue": { "fullName": "Mercedes-Benz Stadium", "address": { "city": "Atlanta", "state": "GA" } },
+        "competitors": [
+          { "homeAway": "home", "score": "2", "team": { "id": "t9", "displayName": "Belgium", "abbreviation": "BEL" } },
+          { "homeAway": "away", "score": "2", "team": { "id": "t10", "displayName": "Egypt", "abbreviation": "EGY" } }
+        ],
+        "details": []
+      }]
+    }
+  ]
+}

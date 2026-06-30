@@ -1,0 +1,45 @@
+/* Design tokens ported from prototype. Dark is the default; .light class on <html> activates light theme. */
+:root {
+  --bg: #0a0a0b;
+  --panel: #141210;
+  --panel2: #1c1813;
+  --line: rgba(229, 193, 90, 0.10);
+  --line2: rgba(229, 193, 90, 0.20);
+  --text: #ece4d2;
+  --muted: #9b9079;
+  --dim: #645c49;
+  --amber: #e5c15a;
+  --amber-dim: #8a6f2e;
+  --green: #5ccb7a;
+  --green-dim: #2f7d49;
+  --elim: #d6493b;
+  --neon: #f3d36a;
+  --cyan: #cdb163;
+  --yellow: #b8923c;
+  --blue: #4a9eff;
+  --win: #e5c15a;
+  --draw: #5a5341;
+  --sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Space Mono", ui-monospace, "SF Mono", "Menlo", Consolas, monospace;
+}
+
+html.light {
+  --bg: #f6f1e4;
+  --panel: #fffdf6;
+  --panel2: #efe8d6;
+  --line: rgba(120, 92, 18, 0.13);
+  --line2: rgba(120, 92, 18, 0.22);
+  --text: #211c10;
+  --muted: #6b6149;
+  --dim: #9a9078;
+  --amber: #9a7414;
+  --amber-dim: #c7a043;
+  --green: #1f9d57;
+  --green-dim: #7fc79b;
+  --cyan: #8a7320;
+  --yellow: #8a6e1e;
+  --blue: #2563eb;
+  --neon: #9a7d24;
+  --elim: #c0392b;
+  --draw: #bcae90;
+}
