@@ -5,6 +5,7 @@ import { usePolling } from './hooks/usePolling';
 import { useWinProb } from './hooks/useWinProb';
 import { computeStandings } from './lib/standings';
 import { computeTopScorers } from './lib/scorers';
+import { computeEliminatedTeams } from './lib/teamStatus';
 import { TopBar } from './components/TopBar/TopBar';
 import { HappeningNow } from './components/HappeningNow/HappeningNow';
 import { FilterBar } from './components/FilterBar/FilterBar';
@@ -27,6 +28,7 @@ export default function App() {
 
   const standings = useMemo(() => computeStandings(matches), [matches]);
   const topScorers = useMemo(() => computeTopScorers(matches, 20), [matches]);
+  const eliminated = useMemo(() => computeEliminatedTeams(matches, standings), [matches, standings]);
 
   return (
     <ThemeProvider>
@@ -40,7 +42,7 @@ export default function App() {
           <FilterBar matches={matches} />
           <Upcoming matches={matches} pm={winProb} />
           <RecentResults matches={matches} />
-          <ScorersAndAssists scorers={topScorers} />
+          <ScorersAndAssists scorers={topScorers} eliminated={eliminated} />
           <Bracket matches={matches} standings={standings} />
           <GroupStandings standings={standings} />
           <ThirdPlaceRace standings={standings} />

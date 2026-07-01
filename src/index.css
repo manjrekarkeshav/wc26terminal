@@ -302,6 +302,7 @@ html.light .show-all { background:#efe8d6; }
 .scorer .nm  { font-size:.84rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .scorer .nat { color:var(--muted); font-size:.64rem; }
 .scorer .g   { color:var(--amber); font-weight:700; font-size:1rem; }
+.scorer .team-status { font-size:.6rem; margin-left:.1rem; cursor:default; }
 .show-more {
   width:100%; background:#0e1116; color:var(--cyan);
   border:0; border-top:1px solid var(--line2);
