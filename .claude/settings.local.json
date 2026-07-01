@@ -77,7 +77,8 @@
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Remove BETA tag from footer *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Rename footer label to WC26TERMINAL *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Show live countdown to next kickoff in Happening Now empty state *)",
-      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Show red-card boxes in recent results \\(ESPN type 93\\), with hover detail *)"
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Show red-card boxes in recent results \\(ESPN type 93\\), with hover detail *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Color-code knockout bracket rounds *)"
     ]
   }
 }

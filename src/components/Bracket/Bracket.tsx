@@ -30,6 +30,15 @@ function TeamLine({ slot }: { slot: BracketSlot }) {
   );
 }
 
+// Accent color class per round (see .bk-c1…5 in index.css).
+const ROUND_CLASS: Record<string, string> = {
+  'Round of 32': 'bk-c1',
+  'Round of 16': 'bk-c2',
+  Quarterfinals: 'bk-c3',
+  Semifinals: 'bk-c4',
+  Final: 'bk-c5',
+};
+
 export function Bracket({ matches, standings }: { matches: Match[]; standings: GroupStanding[] }) {
   const allRounds = computeBracket(matches, standings);
   const rounds = allRounds.filter((r) => r.label !== '3rd Place');
@@ -43,7 +52,7 @@ export function Bracket({ matches, standings }: { matches: Match[]; standings: G
       <div className="bracket-wrap">
         <div className="bracket-cols">
           {rounds.map((round) => (
-            <div key={round.label} className={`bk-col${round.spread ? ' spread' : ''}`}>
+            <div key={round.label} className={`bk-col${round.spread ? ' spread' : ''} ${ROUND_CLASS[round.label] ?? ''}`}>
               <div className="bk-head">{round.label}</div>
               {round.matches.map((match, i) => {
                 const bothPlaceholder = match.home.label != null && match.away.label != null;

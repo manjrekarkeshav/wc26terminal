@@ -399,6 +399,18 @@ html.light .trace th { background:#efe8d6; }
 .bk3rd { margin-top:14px; }
 .bk3rd .bk-head { color:var(--amber-dim); }
 
+/* Per-round accent colors */
+.bk-c1 { --bk:#4a9eff; } /* Round of 32 — blue   */
+.bk-c2 { --bk:#5ccb7a; } /* Round of 16 — green  */
+.bk-c3 { --bk:#e5c15a; } /* Quarterfinals — gold */
+.bk-c4 { --bk:#c77dff; } /* Semifinals — violet  */
+.bk-c5 { --bk:#ff8a5c; } /* Final — coral        */
+.bk-col[class*="bk-c"] .bk-head { color:var(--bk); }
+.bk-col[class*="bk-c"] > .m32,
+.bk-col[class*="bk-c"] > .mph { border-top:2px solid var(--bk); }
+/* keep the 3rd-place sub-header its own muted gold, not the Final color */
+.bk-col .bk3rd .bk-head { color:var(--amber-dim); }
+
 /* ─── Empty & Credit ─────────────────────────────────────────── */
 .empty-card {
   border:1px dashed var(--line2); border-radius:5px; padding:1.5rem;
