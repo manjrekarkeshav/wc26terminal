@@ -9,6 +9,7 @@ export interface ScorerGoal {
   minute: string;
   opponent: string; // opponent team name
   result: string;   // "ARG 3-0 ALG"
+  round: string;    // "Group Stage", "Round of 32", …
 }
 
 export interface ScorerRow {
@@ -31,6 +32,7 @@ export function computeTopScorers(matches: Match[], limit = 10): ScorerRow[] {
     const h = match.homeTeam;
     const a = match.awayTeam;
     const result = `${h.abbreviation} ${match.homeScore ?? 0}-${match.awayScore ?? 0} ${a.abbreviation}`;
+    const round = match.round ?? 'Group Stage';
 
     for (const goal of match.goals) {
       const scoredForHome = goal.teamAbbr === h.abbreviation;
@@ -39,7 +41,7 @@ export function computeTopScorers(matches: Match[], limit = 10): ScorerRow[] {
 
       const key = `${goal.scorer}::${goal.teamAbbr}`;
       const entry = tally.get(key);
-      const scorerGoal: ScorerGoal = { minute: goal.minute, opponent, result };
+      const scorerGoal: ScorerGoal = { minute: goal.minute, opponent, result, round };
       if (entry) entry.goals.push(scorerGoal);
       else tally.set(key, { name: goal.scorer, teamAbbr: goal.teamAbbr, flag, goals: [scorerGoal] });
     }

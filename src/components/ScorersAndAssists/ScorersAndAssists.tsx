@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { ScorerRow } from '../../lib/scorers';
+import { ROUND_CLASS, ROUND_SHORT } from '../../lib/roundColors';
 import { Tooltip } from '../Tooltip/Tooltip';
 
 function LeaderboardPanel({
@@ -29,14 +30,25 @@ function LeaderboardPanel({
       </div>
 
       {visible.map((row) => {
-        const goalLines = row.goals.map((g) => (
-          <>⚽ {g.minute} vs {g.opponent} · <span className="ab">{g.result}</span></>
-        ));
         const isOut = eliminated.has(row.teamAbbr);
+        const goalLines = row.goals.map((g) => (
+          <>
+            <span className={`goal-round ${ROUND_CLASS[g.round] ?? ''}`}>
+              {ROUND_SHORT[g.round] ?? g.round}
+            </span>
+            ⚽ {g.minute} vs {g.opponent} · <span className="ab">{g.result}</span>
+          </>
+        ));
+        const tipLines = [
+          ...goalLines,
+          <span className="tip-foot">
+            {isOut ? "❌ Eliminated from WC '26" : "🟢 Still alive in WC '26"}
+          </span>,
+        ];
         return (
           <div className="scorer" key={`${row.name}-${row.teamAbbr}`}>
             <span className="rk">{row.rank}</span>
-            <Tooltip lines={goalLines}>
+            <Tooltip lines={tipLines}>
               <span className="who">
                 <span className="fl">{row.flag}</span>
                 <span>
@@ -51,7 +63,7 @@ function LeaderboardPanel({
                 </span>
               </span>
             </Tooltip>
-            <Tooltip lines={goalLines} align="right">
+            <Tooltip lines={tipLines} align="right">
               <span className="g">{row.count}</span>
             </Tooltip>
           </div>

@@ -279,7 +279,7 @@ html.light .show-all { background:#efe8d6; }
 .tip {
   display:none; position:absolute; bottom:calc(100% + 6px);
   background:var(--panel2); border:1px solid var(--line2); border-radius:6px;
-  padding:.45rem .6rem; z-index:50; min-width:max-content; max-width:300px;
+  padding:.45rem .6rem; z-index:50; min-width:max-content; max-width:360px;
   box-shadow:0 8px 22px rgba(0,0,0,.45); flex-direction:column; gap:.22rem;
   font-size:.66rem; color:var(--text); line-height:1.45; white-space:nowrap;
   font-family:var(--sans); font-weight:400; text-align:left;
@@ -289,6 +289,16 @@ html.light .show-all { background:#efe8d6; }
 .tip-wrap:hover .tip, .tip-wrap:focus-within .tip { display:flex; }
 .tip-line { display:block; }
 .tip .ab { color:var(--dim); }
+.goal-round {
+  display:inline-block; font-size:.5rem; font-weight:700; letter-spacing:.05em;
+  padding:.02rem .28rem; border-radius:3px; margin-right:.4rem; vertical-align:middle;
+  color:var(--bk, var(--muted)); border:1px solid var(--bk, var(--line2));
+  background:color-mix(in srgb, var(--bk, transparent) 14%, transparent);
+}
+.tip-foot {
+  display:block; margin-top:.15rem; padding-top:.35rem;
+  border-top:1px solid var(--line2); color:var(--muted); font-weight:600;
+}
 .res-empty { color:var(--muted); font-size:.78rem; grid-column:1/-1; }
 
 /* ─── Scorers & Assists ──────────────────────────────────────── */
@@ -415,6 +425,7 @@ html.light .trace th { background:#efe8d6; }
 .bk-c3 { --bk:#e0885a; } /* Quarterfinals — coral*/
 .bk-c4 { --bk:#5bb8c4; } /* Semifinals — teal    */
 .bk-c5 { --bk:#d76d9c; } /* Final — rose         */
+.bk-cg { --bk:#8a94a3; } /* Group stage — slate  */
 .bk-col[class*="bk-c"] .bk-head { color:var(--bk); }
 .bk-col[class*="bk-c"] > .m32,
 .bk-col[class*="bk-c"] > .mph { border-top:2px solid var(--bk); }
