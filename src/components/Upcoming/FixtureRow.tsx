@@ -1,6 +1,7 @@
 import type { Match } from '../../lib/types';
 import type { WinProbMap } from '../../lib/winprob';
 import { rankFor } from '../../lib/rankings';
+import { ROUND_CLASS } from '../../lib/roundColors';
 import { UpcomingWinProb } from '../WinProbBar/WinProbBar';
 import { Countdown } from './Countdown';
 
@@ -11,6 +12,7 @@ function localTime(utc: string): string {
 export function FixtureRow({ match, pm }: { match: Match; pm: WinProbMap | null }) {
   // Knockout rounds show "Round of 32"; group games show "Grp C".
   const pill = match.round ?? match.group ?? '';
+  const pillClass = match.round ? (ROUND_CLASS[match.round] ?? '') : '';
 
   return (
     <div className="up-row">
@@ -28,7 +30,7 @@ export function FixtureRow({ match, pm }: { match: Match; pm: WinProbMap | null 
         {rankFor(match.awayTeam.abbreviation) != null && <sup>{rankFor(match.awayTeam.abbreviation)}</sup>}
       </span>
       <UpcomingWinProb match={match} pm={pm} />
-      <span className="round-pill">{pill}</span>
+      <span className={`round-pill ${pillClass}`}>{pill}</span>
       <span className="venue">{match.venue}</span>
     </div>
   );

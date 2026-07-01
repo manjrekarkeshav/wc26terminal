@@ -6,6 +6,7 @@
 
 import type { GroupStanding, Match } from '../../lib/types';
 import { computeBracket, type BracketSlot } from '../../lib/bracket';
+import { ROUND_CLASS } from '../../lib/roundColors';
 
 function TeamLine({ slot }: { slot: BracketSlot }) {
   if (!slot.team) {
@@ -29,15 +30,6 @@ function TeamLine({ slot }: { slot: BracketSlot }) {
     </div>
   );
 }
-
-// Accent color class per round (see .bk-c1…5 in index.css).
-const ROUND_CLASS: Record<string, string> = {
-  'Round of 32': 'bk-c1',
-  'Round of 16': 'bk-c2',
-  Quarterfinals: 'bk-c3',
-  Semifinals: 'bk-c4',
-  Final: 'bk-c5',
-};
 
 export function Bracket({ matches, standings }: { matches: Match[]; standings: GroupStanding[] }) {
   const allRounds = computeBracket(matches, standings);

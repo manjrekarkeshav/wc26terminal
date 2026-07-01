@@ -224,6 +224,10 @@ html.light .up-bar { background:#ddd5c0; }
   font-size:.6rem; color:var(--muted); border:1px solid var(--line);
   border-radius:4px; padding:.2rem .45rem; white-space:nowrap; text-align:center;
 }
+.round-pill[class*="bk-c"] {
+  color:var(--bk); border-color:var(--bk);
+  background:color-mix(in srgb, var(--bk) 12%, transparent);
+}
 .venue { font-size:.64rem; color:var(--dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .show-all {
   margin:.6rem 0 0; background:#0e1116; color:var(--muted);
