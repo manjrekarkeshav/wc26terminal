@@ -19,6 +19,9 @@
   --blue: #4a9eff;
   --win: #e5c15a;
   --draw: #5a5341;
+  /* Win-probability bar colors — deliberately distinct from the bracket round colors */
+  --wp-home: #2dd4bf; /* teal */
+  --wp-away: #f472b6; /* pink */
   --sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Space Mono", ui-monospace, "SF Mono", "Menlo", Consolas, monospace;
 }
@@ -42,4 +45,6 @@ html.light {
   --neon: #9a7d24;
   --elim: #c0392b;
   --draw: #bcae90;
+  --wp-home: #0d9488; /* teal (darker for light bg) */
+  --wp-away: #db2777; /* pink (darker for light bg) */
 }
