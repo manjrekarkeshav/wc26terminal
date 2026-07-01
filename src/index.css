@@ -403,12 +403,12 @@ html.light .trace th { background:#efe8d6; }
 .bk3rd { margin-top:14px; }
 .bk3rd .bk-head { color:var(--amber-dim); }
 
-/* Per-round accent colors */
-.bk-c1 { --bk:#4a9eff; } /* Round of 32 — blue   */
-.bk-c2 { --bk:#5ccb7a; } /* Round of 16 — green  */
-.bk-c3 { --bk:#e5c15a; } /* Quarterfinals — gold */
-.bk-c4 { --bk:#c77dff; } /* Semifinals — violet  */
-.bk-c5 { --bk:#ff8a5c; } /* Final — coral        */
+/* Per-round accent colors (blue/green reserved for win-probability bars) */
+.bk-c1 { --bk:#e5c15a; } /* Round of 32 — gold   */
+.bk-c2 { --bk:#c77dff; } /* Round of 16 — violet */
+.bk-c3 { --bk:#e0885a; } /* Quarterfinals — coral*/
+.bk-c4 { --bk:#5bb8c4; } /* Semifinals — teal    */
+.bk-c5 { --bk:#d76d9c; } /* Final — rose         */
 .bk-col[class*="bk-c"] .bk-head { color:var(--bk); }
 .bk-col[class*="bk-c"] > .m32,
 .bk-col[class*="bk-c"] > .mph { border-top:2px solid var(--bk); }
