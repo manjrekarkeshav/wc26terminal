@@ -126,16 +126,20 @@ function extractCards(event: Record<string, unknown>): CardEvent[] {
     if (t?.id && t?.abbreviation) abbrById[String(t.id)] = String(t.abbreviation).toUpperCase();
   }
 
+  // ESPN card type IDs: 94 = Yellow Card, 93 = Red Card
+  const CARD_COLOR: Record<string, 'yellow' | 'red'> = { '94': 'yellow', '93': 'red' };
+
   const cards: CardEvent[] = [];
   for (const d of details) {
     const tid = String((d.type as Record<string, unknown>)?.id ?? '');
-    if (tid !== '94') continue; // 94 = Yellow Card
+    const color = CARD_COLOR[tid];
+    if (!color) continue;
     const abbr = abbrById[String((d.team as Record<string, unknown>)?.id ?? '')];
     if (!abbr) continue;
     const athletes = d.athletesInvolved as Record<string, unknown>[] | undefined;
     const player = (athletes?.[0]?.displayName as string) ?? 'Unknown';
     const minute = ((d.clock as Record<string, unknown>)?.displayValue as string) ?? '';
-    cards.push({ player, minute, teamAbbr: abbr });
+    cards.push({ player, minute, teamAbbr: abbr, color });
   }
   return cards;
 }

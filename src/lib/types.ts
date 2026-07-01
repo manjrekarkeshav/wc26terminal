@@ -17,6 +17,7 @@ export interface CardEvent {
   player: string;
   minute: string;      // "54'"
   teamAbbr: string;
+  color: 'yellow' | 'red';
 }
 
 export interface Match {

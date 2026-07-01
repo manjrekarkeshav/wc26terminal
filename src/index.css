@@ -256,12 +256,14 @@ html.light .show-all { background:#efe8d6; }
   color:var(--blue); border:1px solid var(--blue); border-radius:3px;
   padding:.05rem .3rem; background:rgba(74,158,255,.12); line-height:1.2;
 }
-.yc {
+.yc, .redc {
   display:inline-flex; align-items:center; justify-content:center;
   min-width:9px; height:14px; padding:0 .12rem;
-  background:var(--yellow); color:#1a1500; border-radius:1.5px;
+  border-radius:1.5px;
   font-size:.52rem; font-weight:700; font-style:italic; line-height:1; cursor:default;
 }
+.yc { background:var(--yellow); color:#1a1500; }
+.redc { background:var(--elim); color:#fff; }
 
 /* ─── Hover tooltip ──────────────────────────────────────────── */
 .tip-wrap { position:relative; display:inline-flex; cursor:default; }
