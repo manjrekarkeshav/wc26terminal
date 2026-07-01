@@ -58,6 +58,13 @@ function normalizeStatus(event: Record<string, unknown>): MatchStatus {
   return 'pre';
 }
 
+function isDelayed(event: Record<string, unknown>): boolean {
+  const status = event.status as Record<string, unknown> | undefined;
+  const type = status?.type as Record<string, unknown> | undefined;
+  const text = `${type?.name ?? ''} ${type?.description ?? ''} ${type?.detail ?? ''}`.toUpperCase();
+  return /DELAY|POSTPON/.test(text);
+}
+
 function normalizeClock(event: Record<string, unknown>): string | null {
   const status = event.status as Record<string, unknown>;
   const type = status?.type as Record<string, unknown>;
@@ -225,6 +232,7 @@ export function normalizeEvent(event: Record<string, unknown>): Match {
     homeShootout: status === 'post' ? homeSO : null,
     awayShootout: status === 'post' ? awaySO : null,
     winner,
+    delayed: isDelayed(event),
   };
 }
 

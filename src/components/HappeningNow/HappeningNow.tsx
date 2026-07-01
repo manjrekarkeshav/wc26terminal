@@ -10,6 +10,8 @@ export function HappeningNow({ matches, pm }: { matches: Match[]; pm: WinProbMap
   const liveMatches = matches
     .filter((m) => {
       if (m.status === 'in') return true;
+      // Delayed fixtures surface here regardless of their (stale) scheduled time
+      if (m.delayed && m.status !== 'post') return true;
       // Pre-match starting within the next 30 minutes
       if (m.status === 'pre') {
         const diff = new Date(m.kickoffUtc).getTime() - now;

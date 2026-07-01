@@ -44,6 +44,8 @@ export interface Match {
   awayShootout: number | null;
   /** Which side won (knockouts) — handles penalty shootouts. null for draws/unfinished. */
   winner: 'home' | 'away' | null;
+  /** True when ESPN reports the fixture as delayed/postponed (kickoff pushed back). */
+  delayed: boolean;
 }
 
 export interface GroupTeamRow {

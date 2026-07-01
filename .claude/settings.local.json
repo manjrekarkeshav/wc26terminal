@@ -82,7 +82,8 @@
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Color Upcoming round pills to match bracket round colors *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Recolor win-probability bars \\(teal/pink\\) to avoid clashing with round pills *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Refine palette: blue/green win-prob bars, recolor round pills off blue/green *)",
-      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Mark Golden Boot scorers with team status \\(🟢 in / ❌ eliminated\\) *)"
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Mark Golden Boot scorers with team status \\(🟢 in / ❌ eliminated\\) *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Show red Delayed badge in Happening Now for delayed/postponed fixtures *)"
     ]
   }
 }

@@ -23,8 +23,9 @@ export function LiveMatchCard({ match, pm }: { match: Match; pm: WinProbMap | nu
       <div className="lc-head">
         <span className="grp">{contextLabel}</span>
         <span className={`min${isSoon ? ' soon' : ''}`}>
-          <span className="live-dot" aria-hidden="true" />
-          {isSoon ? startsIn(match.kickoffUtc) : match.clock}
+          {match.delayed && <span className="delayed-tag">Delayed</span>}
+          {!match.delayed && <span className="live-dot" aria-hidden="true" />}
+          {isSoon || match.delayed ? startsIn(match.kickoffUtc) : match.clock}
         </span>
       </div>
       <div className="lc-row">
