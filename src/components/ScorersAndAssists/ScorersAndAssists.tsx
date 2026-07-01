@@ -44,7 +44,7 @@ function LeaderboardPanel({
                   <span className="nat">{row.teamAbbr}</span>{' '}
                   <span
                     className="team-status"
-                    title={isOut ? 'Team eliminated' : 'Team still in the competition'}
+                    title={isOut ? "Eliminated from WC '26" : "Still alive in WC '26"}
                   >
                     {isOut ? '❌' : '🟢'}
                   </span>
