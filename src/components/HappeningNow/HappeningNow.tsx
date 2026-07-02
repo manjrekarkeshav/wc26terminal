@@ -49,7 +49,8 @@ export function HappeningNow({ matches, pm }: { matches: Match[]; pm: WinProbMap
                 <b>
                   <Countdown kickoffUtc={nextMatch.kickoffUtc} />
                 </b>{' '}
-                ({nextMatch.homeTeam.name} v {nextMatch.awayTeam.name})
+                (<span className="fl">{nextMatch.homeTeam.flag}</span> {nextMatch.homeTeam.name} v{' '}
+                <span className="fl">{nextMatch.awayTeam.flag}</span> {nextMatch.awayTeam.name})
               </>
             ) : (
               <>⚽ No matches are live right now.</>
