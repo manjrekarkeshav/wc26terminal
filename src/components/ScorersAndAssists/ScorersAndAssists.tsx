@@ -26,6 +26,7 @@ function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
           ) : (
             <span className="ab">through 2022</span>
           ),
+          row.active ? <>🟢 Active in WC26</> : <>🔴 Retired</>,
         ];
         return (
           <div className="scorer" key={row.name}>
@@ -37,11 +38,9 @@ function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
                   <span className="nm">{row.name}</span>{' '}
                   <span className="nat">{row.code}</span>{' '}
                   <span className="at-markers">
-                    {row.isTop && <span title="All-time leader">⭐️</span>}
-                    <span title={row.active ? 'Active in WC26' : 'Retired'}>
-                      {row.active ? '🟢' : '🔴'}
-                    </span>
-                    {row.movedUp && <span title="Climbed the all-time ranking in WC26">🔼</span>}
+                    {row.isTop && <span>⭐️</span>}
+                    <span>{row.active ? '🟢' : '🔴'}</span>
+                    {row.movedUp && <span>🔼</span>}
                   </span>
                 </span>
               </span>
