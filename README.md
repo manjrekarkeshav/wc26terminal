@@ -10,12 +10,16 @@ A live, information-dense **2026 FIFA World Cup dashboard** with a Bloomberg-ter
 
 ## Features
 
-- **Happening Now** — live match cards with scores, match clock, scorers, and win-probability bars. Fixtures appear 30 minutes before kickoff.
-- **Upcoming** — day-grouped fixtures with local kickoff times, live countdowns, round labels, and win-probability bars.
-- **Recent Results** — final-score cards with goal scorers (on hover), yellow-card detail, and a **Penalties** tag for shootouts.
-- **Golden Boot** — top scorers computed live from match events; hover a player to see every goal they've scored and against whom.
-- **Knockout Bracket** — "as it stands," driven by real knockout fixtures; winners advance automatically, with live indicators on in-progress matches.
-- **Group Standings** — all 12 groups computed client-side from results (points, GD, qualification/elimination), with FIFA rank superscripts.
+- **Happening Now** — live match cards with scores, match clock, scorers, and win-probability bars. Fixtures appear 30 minutes before kickoff, the empty state counts down to the next kickoff, and a red **Delayed** badge surfaces postponed matches.
+- **Upcoming** — day-grouped fixtures with local kickoff times, live countdowns, colour-coded round tags, and win-probability bars showing both nations.
+- **Recent Results** — final-score cards with:
+  - goal scorers on hover, and **yellow + red card** detail (who and when);
+  - a **Penalties** tag and shootout score for matches decided on penalties;
+  - a colour-coded **round tag** (Group / R32 / R16 / QF …) on every card;
+  - a **⚡ Shocker** highlight (whole card tinted red) when a top-10 side is held or beaten by a team ranked 20+ places below.
+- **Golden Boot** — top scorers computed live from match events. Hover a player for a per-goal breakdown (minute, opponent, scoreline, and the round it came in), plus a 🟢 / ❌ marker showing whether their nation is still alive in the tournament.
+- **Knockout Bracket** — "as it stands," driven by real knockout fixtures: winners advance automatically (penalties included), with live indicators on in-progress matches, FIFA rank superscripts, penalty scores, and **Penalties / Shocker** tags.
+- **Group Standings** — all 12 groups computed client-side from results (points, GD, qualification / elimination) with FIFA rank superscripts and average-rank per group.
 - **3rd-Place Race** — the 8-of-12 best third-place teams ranked by FIFA tiebreakers.
 - **Win probabilities** — Polymarket markets with a FIFA-ranking model fallback (source-tagged).
 - **Filters** (team / location), **dark + light themes**, fully **responsive**, and a graceful **offline fallback** so it never looks broken when live data is down.
