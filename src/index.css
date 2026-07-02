@@ -505,12 +505,19 @@ html.light .foot { background:#efe8d6; }
   .section-head { padding:1rem .85rem .2rem; flex-wrap:wrap; }
   .stack, .live-grid, .groups, .bracket-wrap, .trace-wrap { padding-left:12px; padding-right:12px; }
 
-  /* Upcoming: stack each fixture vertically (time → match → win bar → venue) */
-  .up-row { grid-template-columns:1fr; gap:.3rem; padding:.7rem .85rem; }
-  .up-cd, .round-pill { display:none; }
-  .up-time { font-size:.74rem; color:var(--muted); }
-  .up-match { white-space:normal; }
-  .up-wp { justify-content:flex-start; }
+  /* Upcoming: compact 2-line fixture — [time · match] then [win bar] */
+  .up-row {
+    grid-template-columns:auto 1fr;
+    grid-template-areas:
+      "time match"
+      "wp   wp";
+    align-items:center; column-gap:.55rem; row-gap:.28rem; padding:.5rem .85rem;
+  }
+  .up-time { grid-area:time; font-size:.72rem; color:var(--muted); }
+  .up-match { grid-area:match; }
+  .up-wp { grid-area:wp; justify-content:flex-start; }
+  .up-cd, .round-pill, .venue { display:none; }
+  .day-head { padding:.7rem .85rem .2rem; }
 
   /* one card per row everywhere a min-width would otherwise overflow */
   .results-grid, .sa-grid, .groups { grid-template-columns:1fr; }

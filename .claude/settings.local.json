@@ -93,7 +93,9 @@
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Flag SHOCKER upsets \\(rank gap >=20, favorite fails to win\\) in results + bracket *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Refine SHOCKER: top-left on cards, top of bracket box, neon red, top-10 favorite only *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Recent results: light-red score box + smaller font; bracket shows shootout scores *)",
-      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Recent results: light-red shocker card + round-type tags; bracket penalties/shocker tags + pen scores; shocker requires top-10 favorite *)"
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Recent results: light-red shocker card + round-type tags; bracket penalties/shocker tags + pen scores; shocker requires top-10 favorite *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Docs: refresh README features \\(shockers, red cards, team status, round tags, delayed, penalties\\) *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Compact Upcoming rows on mobile \\(2-line layout, drop venue/countdown\\) *)"
     ]
   }
 }
