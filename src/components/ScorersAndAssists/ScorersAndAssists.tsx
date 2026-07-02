@@ -21,11 +21,9 @@ function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
       {visible.map((row) => {
         const lines = [
           <>⚽ {row.total} career World Cup goals</>,
-          row.wc26 > 0 ? (
-            <span className="ab">{row.pre} pre-2026 · +{row.wc26} in WC26</span>
-          ) : (
-            <span className="ab">through 2022</span>
-          ),
+          ...(row.wc26 > 0
+            ? [<span className="ab">{row.pre} pre-2026 · +{row.wc26} in WC26</span>]
+            : []),
           row.active ? <>🟢 Active in WC26</> : <>🔴 Retired</>,
         ];
         return (
