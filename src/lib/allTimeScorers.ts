@@ -19,6 +19,7 @@ export interface AllTimeRow {
   wc26: number;
   isTop: boolean;  // current outright leader → ⭐
   movedUp: boolean; // climbed the all-time ranking during WC26 → 🔼
+  active: boolean;  // scored in WC26 → still active (🟢), otherwise retired (🔴)
 }
 
 // Country → { flag, 3-letter code } for the nations in the all-time list.
@@ -77,7 +78,7 @@ export function computeAllTimeScorers(matches: Match[]): AllTimeRow[] {
 
   return [...merged]
     .sort((a, b) => b.total - a.total || b.pre - a.pre || a.name.localeCompare(b.name))
-    .slice(0, 10)
+    .slice(0, 20)
     .map((m, i) => {
       const meta = COUNTRY_META[m.country] ?? { flag: '🏳️', code: m.country.slice(0, 3).toUpperCase() };
       const combinedRank = rankOf(m.total);
@@ -91,6 +92,7 @@ export function computeAllTimeScorers(matches: Match[]): AllTimeRow[] {
         wc26: m.wc26,
         isTop: combinedRank === 1,
         movedUp: m.wc26 > 0 && combinedRank < m.preRank,
+        active: m.wc26 > 0,
       };
     });
 }

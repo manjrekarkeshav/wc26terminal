@@ -97,7 +97,8 @@
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Docs: refresh README features \\(shockers, red cards, team status, round tags, delayed, penalties\\) *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Compact Upcoming rows on mobile \\(2-line layout, drop venue/countdown\\) *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Compact Recent Results + Golden Boot spacing on mobile *)",
-      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Add All-time top scorers panel \\(career WC goals = pre-2026 + WC26, star + climb markers\\) *)"
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Add All-time top scorers panel \\(career WC goals = pre-2026 + WC26, star + climb markers\\) *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'All-time scorers: active/retired status \\(🟢/🔴\\), marker order after code, top-20 toggle *)"
     ]
   }
 }

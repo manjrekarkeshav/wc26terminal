@@ -5,6 +5,9 @@ import { ROUND_CLASS, ROUND_SHORT } from '../../lib/roundColors';
 import { Tooltip } from '../Tooltip/Tooltip';
 
 function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? rows : rows.slice(0, 10);
+
   return (
     <div className="panel">
       <div className="phead">
@@ -15,7 +18,7 @@ function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
         <span className="count c-cyan">WC GOALS</span>
       </div>
 
-      {rows.map((row) => {
+      {visible.map((row) => {
         const lines = [
           <>⚽ {row.total} career World Cup goals</>,
           row.wc26 > 0 ? (
@@ -31,12 +34,15 @@ function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
               <span className="who">
                 <span className="fl">{row.flag}</span>
                 <span>
-                  <span className="nm">
-                    {row.name}
-                    {row.isTop && ' ⭐️'}
-                    {row.movedUp && ' 🔼'}
-                  </span>{' '}
-                  <span className="nat">{row.code}</span>
+                  <span className="nm">{row.name}</span>{' '}
+                  <span className="nat">{row.code}</span>{' '}
+                  <span className="at-markers">
+                    {row.isTop && <span title="All-time leader">⭐️</span>}
+                    <span title={row.active ? 'Active in WC26' : 'Retired'}>
+                      {row.active ? '🟢' : '🔴'}
+                    </span>
+                    {row.movedUp && <span title="Climbed the all-time ranking in WC26">🔼</span>}
+                  </span>
                 </span>
               </span>
             </Tooltip>
@@ -46,6 +52,12 @@ function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
           </div>
         );
       })}
+
+      {rows.length > 10 && (
+        <button className="show-more" type="button" onClick={() => setExpanded((e) => !e)}>
+          {expanded ? 'Show top 10' : `Show top ${Math.min(rows.length, 20)}`}
+        </button>
+      )}
     </div>
   );
 }
