@@ -246,6 +246,7 @@ html.light .show-all { background:#efe8d6; }
 /* ─── Recent Results (card grid) ─────────────────────────────── */
 .results-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(355px,1fr)); gap:12px; }
 .res-card {
+  position:relative;
   display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:.6rem;
   background:var(--panel); border:1px solid var(--line2); border-radius:6px;
   padding:.6rem .85rem; font-size:.92rem;
@@ -265,13 +266,16 @@ html.light .show-all { background:#efe8d6; }
   color:var(--blue); border:1px solid var(--blue); border-radius:3px;
   padding:.05rem .3rem; background:rgba(74,158,255,.12); line-height:1.2;
 }
-/* SHOCKER — filled purple, distinct from the outlined round pills */
+/* SHOCKER — filled neon red, white text */
 .shocker-tag {
   display:inline-flex; align-items:center; font-size:.5rem; font-weight:700;
   letter-spacing:.08em; text-transform:uppercase; color:#fff;
-  background:#a855f7; border:1px solid #a855f7; border-radius:3px;
+  background:#ff1744; border:1px solid #ff1744; border-radius:3px;
   padding:.06rem .34rem; line-height:1.2; cursor:default; white-space:nowrap;
+  box-shadow:0 0 8px rgba(255,23,68,.45);
 }
+/* positioned at the top-left of the result card */
+.rc-shock-pos { position:absolute; top:-7px; left:8px; z-index:2; }
 .yc, .redc {
   display:inline-flex; align-items:center; justify-content:center;
   min-width:9px; height:14px; padding:0 .12rem;
@@ -420,11 +424,11 @@ html.light .trace th { background:#efe8d6; }
 .mteam.adv .nm { color:var(--green); }
 .mteam .seed { font-size:.56rem; color:var(--dim); margin-left:.2rem; }
 .mteam .msc { font-weight:700; font-variant-numeric:tabular-nums; color:var(--text); font-family:var(--mono); margin-left:.3rem; }
-.m32.shock { box-shadow:inset 3px 0 0 #a855f7; }
+.m32.shock { box-shadow:inset 3px 0 0 #ff1744; }
 .m32-shock {
   display:flex; align-items:center; gap:.2rem;
   font-size:.5rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
-  color:#c99af0; background:rgba(168,85,247,.15); border-top:1px solid var(--line);
+  color:#fff; background:#ff1744; border-bottom:1px solid rgba(255,23,68,.4);
   padding:.2rem .5rem; cursor:default;
 }
 .mph { padding:.1rem 0; }

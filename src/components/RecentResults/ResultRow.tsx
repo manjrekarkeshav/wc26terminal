@@ -53,6 +53,13 @@ export function ResultRow({ match }: { match: Match }) {
 
   return (
     <div className="res-card">
+      {upset && (
+        <span className="rc-shock-pos">
+          <Tooltip lines={[<>⚡ {upset.text}</>]} align="left">
+            <span className="shocker-tag">⚡ Shocker</span>
+          </Tooltip>
+        </span>
+      )}
       <span className="rc-side">
         <span className="fl">{match.homeTeam.flag}</span>
         <span className="rc-abbr">{homeAbbr}</span>
@@ -64,11 +71,6 @@ export function ResultRow({ match }: { match: Match }) {
         <Tooltip lines={goalLines} align="left">
           <span className="rc-score">{homeText} – {awayText}</span>
         </Tooltip>
-        {upset && (
-          <Tooltip lines={[<>⚡ {upset.text}</>]} align="left">
-            <span className="shocker-tag">⚡ Shocker</span>
-          </Tooltip>
-        )}
         {hasShootout && <span className="pen-tag">Penalties</span>}
       </span>
 

@@ -10,6 +10,7 @@ import type { Match } from './types';
 import { rankFor } from './rankings';
 
 const RANK_GAP = 20;
+const FAV_MAX_RANK = 10; // the upset favorite must be a top-10 side
 
 export interface UpsetInfo {
   /** e.g. "#41 Paraguay knocked out #10 Germany" */
@@ -27,6 +28,7 @@ export function getUpset(match: Match): UpsetInfo | null {
   const favRank = homeIsFav ? homeRank : awayRank;
   const dogRank = homeIsFav ? awayRank : homeRank;
   if (dogRank - favRank < RANK_GAP) return null;
+  if (favRank > FAV_MAX_RANK) return null; // only a top-10 favorite counts
 
   const fav = homeIsFav ? match.homeTeam : match.awayTeam;
   const dog = homeIsFav ? match.awayTeam : match.homeTeam;
