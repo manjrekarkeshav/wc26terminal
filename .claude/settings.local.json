@@ -102,7 +102,8 @@
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'All-time scorers: show Active/Retired in the hover box instead of emoji title *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'All-time scorers: drop redundant '\\\\''through 2022'\\\\'' line for retired players *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Docs: add All-time top scorers to README features *)",
-      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Add country flags to next-kickoff line in Happening Now empty state *)"
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Add country flags to next-kickoff line in Happening Now empty state *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'All-time scorers: show West Germany as GER for consistency *)"
     ]
   }
 }

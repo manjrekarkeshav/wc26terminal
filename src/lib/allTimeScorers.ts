@@ -25,7 +25,7 @@ export interface AllTimeRow {
 // Country → { flag, 3-letter code } for the nations in the all-time list.
 const COUNTRY_META: Record<string, { flag: string; code: string }> = {
   Germany: { flag: '🇩🇪', code: 'GER' },
-  'West Germany': { flag: '🇩🇪', code: 'FRG' },
+  'West Germany': { flag: '🇩🇪', code: 'GER' },
   Brazil: { flag: '🇧🇷', code: 'BRA' },
   France: { flag: '🇫🇷', code: 'FRA' },
   Argentina: { flag: '🇦🇷', code: 'ARG' },
