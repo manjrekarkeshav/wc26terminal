@@ -1,7 +1,54 @@
 import { useState } from 'react';
 import type { ScorerRow } from '../../lib/scorers';
+import type { AllTimeRow } from '../../lib/allTimeScorers';
 import { ROUND_CLASS, ROUND_SHORT } from '../../lib/roundColors';
 import { Tooltip } from '../Tooltip/Tooltip';
+
+function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
+  return (
+    <div className="panel">
+      <div className="phead">
+        <span className="l">
+          <span className="tick">◎</span>
+          <span className="eyebrow">All-time top scorers</span>
+        </span>
+        <span className="count c-cyan">WC GOALS</span>
+      </div>
+
+      {rows.map((row) => {
+        const lines = [
+          <>⚽ {row.total} career World Cup goals</>,
+          row.wc26 > 0 ? (
+            <span className="ab">{row.pre} pre-2026 · +{row.wc26} in WC26</span>
+          ) : (
+            <span className="ab">through 2022</span>
+          ),
+        ];
+        return (
+          <div className="scorer" key={row.name}>
+            <span className="rk">{row.rank}</span>
+            <Tooltip lines={lines}>
+              <span className="who">
+                <span className="fl">{row.flag}</span>
+                <span>
+                  <span className="nm">
+                    {row.name}
+                    {row.isTop && ' ⭐️'}
+                    {row.movedUp && ' 🔼'}
+                  </span>{' '}
+                  <span className="nat">{row.code}</span>
+                </span>
+              </span>
+            </Tooltip>
+            <Tooltip lines={lines} align="right">
+              <span className="g">{row.total}</span>
+            </Tooltip>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 function LeaderboardPanel({
   title,
@@ -82,9 +129,11 @@ function LeaderboardPanel({
 export function ScorersAndAssists({
   scorers,
   eliminated,
+  allTime,
 }: {
   scorers: ScorerRow[];
   eliminated: Set<string>;
+  allTime: AllTimeRow[];
 }) {
   if (scorers.length === 0) return null;
 
@@ -92,7 +141,7 @@ export function ScorersAndAssists({
     <>
       <div className="section-head" id="scorers">
         <h2>Golden Boot</h2>
-        <span className="sub">top scorers · goals</span>
+        <span className="sub">this World Cup &amp; all-time · goals</span>
       </div>
       <div className="stack">
         <div className="sa-grid">
@@ -103,6 +152,7 @@ export function ScorersAndAssists({
             rows={scorers}
             eliminated={eliminated}
           />
+          <AllTimePanel rows={allTime} />
         </div>
       </div>
     </>

@@ -1,0 +1,919 @@
+{
+  "title": "FIFA World Cup all-time top goalscorers (>=5 goals)",
+  "as_of": "Pre-2026 World Cup (totals through the 2022 tournament)",
+  "note": "Standings as they stood before the 2026 World Cup kicked off. Ranks are shared within each goal tier (competition ranking). Excludes penalty shootout goals.",
+  "source": "Wikipedia: List of FIFA World Cup top goalscorers",
+  "threshold": 5,
+  "player_count": 101,
+  "players": [
+    {
+      "rank": 1,
+      "player": "Miroslav Klose",
+      "country": "Germany",
+      "goals": 16,
+      "matches": 24,
+      "goals_per_match": 0.67,
+      "tournaments_scored": "2002, 2006, 2010, 2014"
+    },
+    {
+      "rank": 2,
+      "player": "Ronaldo",
+      "country": "Brazil",
+      "goals": 15,
+      "matches": 19,
+      "goals_per_match": 0.79,
+      "tournaments_scored": "1998, 2002, 2006"
+    },
+    {
+      "rank": 3,
+      "player": "Gerd Müller",
+      "country": "West Germany",
+      "goals": 14,
+      "matches": 13,
+      "goals_per_match": 1.08,
+      "tournaments_scored": "1970, 1974"
+    },
+    {
+      "rank": 4,
+      "player": "Just Fontaine",
+      "country": "France",
+      "goals": 13,
+      "matches": 6,
+      "goals_per_match": 2.17,
+      "tournaments_scored": "1958"
+    },
+    {
+      "rank": 4,
+      "player": "Lionel Messi",
+      "country": "Argentina",
+      "goals": 13,
+      "matches": 26,
+      "goals_per_match": 0.5,
+      "tournaments_scored": "2006, 2014, 2018, 2022"
+    },
+    {
+      "rank": 6,
+      "player": "Pelé",
+      "country": "Brazil",
+      "goals": 12,
+      "matches": 14,
+      "goals_per_match": 0.86,
+      "tournaments_scored": "1958, 1962, 1966, 1970"
+    },
+    {
+      "rank": 6,
+      "player": "Kylian Mbappé",
+      "country": "France",
+      "goals": 12,
+      "matches": 14,
+      "goals_per_match": 0.86,
+      "tournaments_scored": "2018, 2022"
+    },
+    {
+      "rank": 8,
+      "player": "Sándor Kocsis",
+      "country": "Hungary",
+      "goals": 11,
+      "matches": 5,
+      "goals_per_match": 2.2,
+      "tournaments_scored": "1954"
+    },
+    {
+      "rank": 8,
+      "player": "Jürgen Klinsmann",
+      "country": "Germany",
+      "goals": 11,
+      "matches": 17,
+      "goals_per_match": 0.65,
+      "tournaments_scored": "1990, 1994, 1998"
+    },
+    {
+      "rank": 10,
+      "player": "Helmut Rahn",
+      "country": "West Germany",
+      "goals": 10,
+      "matches": 10,
+      "goals_per_match": 1.0,
+      "tournaments_scored": "1954, 1958"
+    },
+    {
+      "rank": 10,
+      "player": "Gary Lineker",
+      "country": "England",
+      "goals": 10,
+      "matches": 12,
+      "goals_per_match": 0.83,
+      "tournaments_scored": "1986, 1990"
+    },
+    {
+      "rank": 10,
+      "player": "Gabriel Batistuta",
+      "country": "Argentina",
+      "goals": 10,
+      "matches": 12,
+      "goals_per_match": 0.83,
+      "tournaments_scored": "1994, 1998, 2002"
+    },
+    {
+      "rank": 10,
+      "player": "Teófilo Cubillas",
+      "country": "Peru",
+      "goals": 10,
+      "matches": 13,
+      "goals_per_match": 0.77,
+      "tournaments_scored": "1970, 1978"
+    },
+    {
+      "rank": 10,
+      "player": "Thomas Müller",
+      "country": "Germany",
+      "goals": 10,
+      "matches": 19,
+      "goals_per_match": 0.53,
+      "tournaments_scored": "2010, 2014"
+    },
+    {
+      "rank": 10,
+      "player": "Grzegorz Lato",
+      "country": "Poland",
+      "goals": 10,
+      "matches": 20,
+      "goals_per_match": 0.5,
+      "tournaments_scored": "1974, 1978, 1982"
+    },
+    {
+      "rank": 16,
+      "player": "Ademir",
+      "country": "Brazil",
+      "goals": 9,
+      "matches": 6,
+      "goals_per_match": 1.5,
+      "tournaments_scored": "1950"
+    },
+    {
+      "rank": 16,
+      "player": "Eusébio",
+      "country": "Portugal",
+      "goals": 9,
+      "matches": 6,
+      "goals_per_match": 1.5,
+      "tournaments_scored": "1966"
+    },
+    {
+      "rank": 16,
+      "player": "Christian Vieri",
+      "country": "Italy",
+      "goals": 9,
+      "matches": 9,
+      "goals_per_match": 1.0,
+      "tournaments_scored": "1998, 2002"
+    },
+    {
+      "rank": 16,
+      "player": "Vavá",
+      "country": "Brazil",
+      "goals": 9,
+      "matches": 10,
+      "goals_per_match": 0.9,
+      "tournaments_scored": "1958, 1962"
+    },
+    {
+      "rank": 16,
+      "player": "David Villa",
+      "country": "Spain",
+      "goals": 9,
+      "matches": 12,
+      "goals_per_match": 0.75,
+      "tournaments_scored": "2006, 2010, 2014"
+    },
+    {
+      "rank": 16,
+      "player": "Paolo Rossi",
+      "country": "Italy",
+      "goals": 9,
+      "matches": 14,
+      "goals_per_match": 0.64,
+      "tournaments_scored": "1978, 1982"
+    },
+    {
+      "rank": 16,
+      "player": "Jairzinho",
+      "country": "Brazil",
+      "goals": 9,
+      "matches": 16,
+      "goals_per_match": 0.56,
+      "tournaments_scored": "1970, 1974"
+    },
+    {
+      "rank": 16,
+      "player": "Roberto Baggio",
+      "country": "Italy",
+      "goals": 9,
+      "matches": 16,
+      "goals_per_match": 0.56,
+      "tournaments_scored": "1990, 1994, 1998"
+    },
+    {
+      "rank": 16,
+      "player": "Karl-Heinz Rummenigge",
+      "country": "West Germany",
+      "goals": 9,
+      "matches": 19,
+      "goals_per_match": 0.47,
+      "tournaments_scored": "1978, 1982, 1986"
+    },
+    {
+      "rank": 16,
+      "player": "Uwe Seeler",
+      "country": "West Germany",
+      "goals": 9,
+      "matches": 21,
+      "goals_per_match": 0.43,
+      "tournaments_scored": "1958, 1962, 1966, 1970"
+    },
+    {
+      "rank": 26,
+      "player": "Guillermo Stábile",
+      "country": "Argentina",
+      "goals": 8,
+      "matches": 4,
+      "goals_per_match": 2.0,
+      "tournaments_scored": "1930"
+    },
+    {
+      "rank": 26,
+      "player": "Leônidas",
+      "country": "Brazil",
+      "goals": 8,
+      "matches": 5,
+      "goals_per_match": 1.6,
+      "tournaments_scored": "1934, 1938"
+    },
+    {
+      "rank": 26,
+      "player": "Óscar Míguez",
+      "country": "Uruguay",
+      "goals": 8,
+      "matches": 7,
+      "goals_per_match": 1.14,
+      "tournaments_scored": "1950, 1954"
+    },
+    {
+      "rank": 26,
+      "player": "Harry Kane",
+      "country": "England",
+      "goals": 8,
+      "matches": 11,
+      "goals_per_match": 0.73,
+      "tournaments_scored": "2018, 2022"
+    },
+    {
+      "rank": 26,
+      "player": "Neymar",
+      "country": "Brazil",
+      "goals": 8,
+      "matches": 13,
+      "goals_per_match": 0.62,
+      "tournaments_scored": "2014, 2018, 2022"
+    },
+    {
+      "rank": 26,
+      "player": "Rivaldo",
+      "country": "Brazil",
+      "goals": 8,
+      "matches": 14,
+      "goals_per_match": 0.57,
+      "tournaments_scored": "1998, 2002"
+    },
+    {
+      "rank": 26,
+      "player": "Rudi Völler",
+      "country": "Germany",
+      "goals": 8,
+      "matches": 15,
+      "goals_per_match": 0.53,
+      "tournaments_scored": "1986, 1990, 1994"
+    },
+    {
+      "rank": 26,
+      "player": "Diego Maradona",
+      "country": "Argentina",
+      "goals": 8,
+      "matches": 21,
+      "goals_per_match": 0.38,
+      "tournaments_scored": "1982, 1986, 1994"
+    },
+    {
+      "rank": 26,
+      "player": "Cristiano Ronaldo",
+      "country": "Portugal",
+      "goals": 8,
+      "matches": 22,
+      "goals_per_match": 0.36,
+      "tournaments_scored": "2006, 2010, 2014, 2018, 2022"
+    },
+    {
+      "rank": 35,
+      "player": "Oldřich Nejedlý",
+      "country": "Czechoslovakia",
+      "goals": 7,
+      "matches": 6,
+      "goals_per_match": 1.17,
+      "tournaments_scored": "1934, 1938"
+    },
+    {
+      "rank": 35,
+      "player": "Lajos Tichy",
+      "country": "Hungary",
+      "goals": 7,
+      "matches": 8,
+      "goals_per_match": 0.88,
+      "tournaments_scored": "1958, 1962"
+    },
+    {
+      "rank": 35,
+      "player": "Careca",
+      "country": "Brazil",
+      "goals": 7,
+      "matches": 9,
+      "goals_per_match": 0.78,
+      "tournaments_scored": "1986, 1990"
+    },
+    {
+      "rank": 35,
+      "player": "Johnny Rep",
+      "country": "Netherlands",
+      "goals": 7,
+      "matches": 13,
+      "goals_per_match": 0.54,
+      "tournaments_scored": "1974, 1978"
+    },
+    {
+      "rank": 35,
+      "player": "Andrzej Szarmach",
+      "country": "Poland",
+      "goals": 7,
+      "matches": 13,
+      "goals_per_match": 0.54,
+      "tournaments_scored": "1974, 1978, 1982"
+    },
+    {
+      "rank": 35,
+      "player": "Hans Schäfer",
+      "country": "West Germany",
+      "goals": 7,
+      "matches": 15,
+      "goals_per_match": 0.47,
+      "tournaments_scored": "1954, 1958"
+    },
+    {
+      "rank": 35,
+      "player": "Luis Suárez",
+      "country": "Uruguay",
+      "goals": 7,
+      "matches": 16,
+      "goals_per_match": 0.44,
+      "tournaments_scored": "2010, 2014, 2018"
+    },
+    {
+      "rank": 42,
+      "player": "Josef Hügi",
+      "country": "Switzerland",
+      "goals": 6,
+      "matches": 3,
+      "goals_per_match": 2.0,
+      "tournaments_scored": "1954"
+    },
+    {
+      "rank": 42,
+      "player": "Oleg Salenko",
+      "country": "Russia",
+      "goals": 6,
+      "matches": 3,
+      "goals_per_match": 2.0,
+      "tournaments_scored": "1994"
+    },
+    {
+      "rank": 42,
+      "player": "György Sárosi",
+      "country": "Hungary",
+      "goals": 6,
+      "matches": 5,
+      "goals_per_match": 1.2,
+      "tournaments_scored": "1934, 1938"
+    },
+    {
+      "rank": 42,
+      "player": "Max Morlock",
+      "country": "West Germany",
+      "goals": 6,
+      "matches": 5,
+      "goals_per_match": 1.2,
+      "tournaments_scored": "1954"
+    },
+    {
+      "rank": 42,
+      "player": "Erich Probst",
+      "country": "Austria",
+      "goals": 6,
+      "matches": 5,
+      "goals_per_match": 1.2,
+      "tournaments_scored": "1954"
+    },
+    {
+      "rank": 42,
+      "player": "Enner Valencia",
+      "country": "Ecuador",
+      "goals": 6,
+      "matches": 6,
+      "goals_per_match": 1.0,
+      "tournaments_scored": "2014, 2022"
+    },
+    {
+      "rank": 42,
+      "player": "Salvatore Schillaci",
+      "country": "Italy",
+      "goals": 6,
+      "matches": 7,
+      "goals_per_match": 0.86,
+      "tournaments_scored": "1990"
+    },
+    {
+      "rank": 42,
+      "player": "Davor Šuker",
+      "country": "Croatia",
+      "goals": 6,
+      "matches": 8,
+      "goals_per_match": 0.75,
+      "tournaments_scored": "1998"
+    },
+    {
+      "rank": 42,
+      "player": "James Rodríguez",
+      "country": "Colombia",
+      "goals": 6,
+      "matches": 8,
+      "goals_per_match": 0.75,
+      "tournaments_scored": "2014"
+    },
+    {
+      "rank": 42,
+      "player": "Helmut Haller",
+      "country": "West Germany",
+      "goals": 6,
+      "matches": 9,
+      "goals_per_match": 0.67,
+      "tournaments_scored": "1966"
+    },
+    {
+      "rank": 42,
+      "player": "Hristo Stoichkov",
+      "country": "Bulgaria",
+      "goals": 6,
+      "matches": 10,
+      "goals_per_match": 0.6,
+      "tournaments_scored": "1994"
+    },
+    {
+      "rank": 42,
+      "player": "Diego Forlán",
+      "country": "Uruguay",
+      "goals": 6,
+      "matches": 10,
+      "goals_per_match": 0.6,
+      "tournaments_scored": "2002, 2010"
+    },
+    {
+      "rank": 42,
+      "player": "Asamoah Gyan",
+      "country": "Ghana",
+      "goals": 6,
+      "matches": 11,
+      "goals_per_match": 0.55,
+      "tournaments_scored": "2006, 2010, 2014"
+    },
+    {
+      "rank": 42,
+      "player": "Dennis Bergkamp",
+      "country": "Netherlands",
+      "goals": 6,
+      "matches": 12,
+      "goals_per_match": 0.5,
+      "tournaments_scored": "1994, 1998"
+    },
+    {
+      "rank": 42,
+      "player": "Rob Rensenbrink",
+      "country": "Netherlands",
+      "goals": 6,
+      "matches": 13,
+      "goals_per_match": 0.46,
+      "tournaments_scored": "1974, 1978"
+    },
+    {
+      "rank": 42,
+      "player": "Rivellino",
+      "country": "Brazil",
+      "goals": 6,
+      "matches": 15,
+      "goals_per_match": 0.4,
+      "tournaments_scored": "1970, 1974"
+    },
+    {
+      "rank": 42,
+      "player": "Bebeto",
+      "country": "Brazil",
+      "goals": 6,
+      "matches": 15,
+      "goals_per_match": 0.4,
+      "tournaments_scored": "1994, 1998"
+    },
+    {
+      "rank": 42,
+      "player": "Arjen Robben",
+      "country": "Netherlands",
+      "goals": 6,
+      "matches": 15,
+      "goals_per_match": 0.4,
+      "tournaments_scored": "2006, 2010, 2014"
+    },
+    {
+      "rank": 42,
+      "player": "Zbigniew Boniek",
+      "country": "Poland",
+      "goals": 6,
+      "matches": 16,
+      "goals_per_match": 0.38,
+      "tournaments_scored": "1978, 1982"
+    },
+    {
+      "rank": 42,
+      "player": "Thierry Henry",
+      "country": "France",
+      "goals": 6,
+      "matches": 17,
+      "goals_per_match": 0.35,
+      "tournaments_scored": "1998, 2006"
+    },
+    {
+      "rank": 42,
+      "player": "Robin van Persie",
+      "country": "Netherlands",
+      "goals": 6,
+      "matches": 17,
+      "goals_per_match": 0.35,
+      "tournaments_scored": "2006, 2010, 2014"
+    },
+    {
+      "rank": 42,
+      "player": "Wesley Sneijder",
+      "country": "Netherlands",
+      "goals": 6,
+      "matches": 17,
+      "goals_per_match": 0.35,
+      "tournaments_scored": "2010, 2014"
+    },
+    {
+      "rank": 42,
+      "player": "Ivan Perišić",
+      "country": "Croatia",
+      "goals": 6,
+      "matches": 17,
+      "goals_per_match": 0.35,
+      "tournaments_scored": "2014, 2018, 2022"
+    },
+    {
+      "rank": 42,
+      "player": "Mario Kempes",
+      "country": "Argentina",
+      "goals": 6,
+      "matches": 18,
+      "goals_per_match": 0.33,
+      "tournaments_scored": "1978"
+    },
+    {
+      "rank": 42,
+      "player": "Lothar Matthäus",
+      "country": "Germany",
+      "goals": 6,
+      "matches": 25,
+      "goals_per_match": 0.24,
+      "tournaments_scored": "1986, 1990, 1994"
+    },
+    {
+      "rank": 67,
+      "player": "Pedro Cea",
+      "country": "Uruguay",
+      "goals": 5,
+      "matches": 4,
+      "goals_per_match": 1.25,
+      "tournaments_scored": "1930"
+    },
+    {
+      "rank": 67,
+      "player": "Silvio Piola",
+      "country": "Italy",
+      "goals": 5,
+      "matches": 4,
+      "goals_per_match": 1.25,
+      "tournaments_scored": "1938"
+    },
+    {
+      "rank": 67,
+      "player": "Gyula Zsengellér",
+      "country": "Hungary",
+      "goals": 5,
+      "matches": 4,
+      "goals_per_match": 1.25,
+      "tournaments_scored": "1938"
+    },
+    {
+      "rank": 67,
+      "player": "Peter McParland",
+      "country": "Northern Ireland",
+      "goals": 5,
+      "matches": 5,
+      "goals_per_match": 1.0,
+      "tournaments_scored": "1958"
+    },
+    {
+      "rank": 67,
+      "player": "Tomáš Skuhravý",
+      "country": "Czechoslovakia",
+      "goals": 5,
+      "matches": 5,
+      "goals_per_match": 1.0,
+      "tournaments_scored": "1990"
+    },
+    {
+      "rank": 67,
+      "player": "Juan Alberto Schiaffino",
+      "country": "Uruguay",
+      "goals": 5,
+      "matches": 6,
+      "goals_per_match": 0.83,
+      "tournaments_scored": "1950, 1954"
+    },
+    {
+      "rank": 67,
+      "player": "Geoff Hurst",
+      "country": "England",
+      "goals": 5,
+      "matches": 6,
+      "goals_per_match": 0.83,
+      "tournaments_scored": "1966, 1970"
+    },
+    {
+      "rank": 67,
+      "player": "Jon Dahl Tomasson",
+      "country": "Denmark",
+      "goals": 5,
+      "matches": 6,
+      "goals_per_match": 0.83,
+      "tournaments_scored": "2002, 2010"
+    },
+    {
+      "rank": 67,
+      "player": "Alessandro Altobelli",
+      "country": "Italy",
+      "goals": 5,
+      "matches": 7,
+      "goals_per_match": 0.71,
+      "tournaments_scored": "1982, 1986"
+    },
+    {
+      "rank": 67,
+      "player": "Kennet Andersson",
+      "country": "Sweden",
+      "goals": 5,
+      "matches": 7,
+      "goals_per_match": 0.71,
+      "tournaments_scored": "1994"
+    },
+    {
+      "rank": 67,
+      "player": "Fernando Morientes",
+      "country": "Spain",
+      "goals": 5,
+      "matches": 7,
+      "goals_per_match": 0.71,
+      "tournaments_scored": "1998, 2002"
+    },
+    {
+      "rank": 67,
+      "player": "Romário",
+      "country": "Brazil",
+      "goals": 5,
+      "matches": 8,
+      "goals_per_match": 0.63,
+      "tournaments_scored": "1994"
+    },
+    {
+      "rank": 67,
+      "player": "Marc Wilmots",
+      "country": "Belgium",
+      "goals": 5,
+      "matches": 8,
+      "goals_per_match": 0.63,
+      "tournaments_scored": "1998, 2002"
+    },
+    {
+      "rank": 67,
+      "player": "Mario Mandžukić",
+      "country": "Croatia",
+      "goals": 5,
+      "matches": 8,
+      "goals_per_match": 0.63,
+      "tournaments_scored": "2014, 2018"
+    },
+    {
+      "rank": 67,
+      "player": "Valentin Ivanov",
+      "country": "Soviet Union",
+      "goals": 5,
+      "matches": 9,
+      "goals_per_match": 0.56,
+      "tournaments_scored": "1958, 1962"
+    },
+    {
+      "rank": 67,
+      "player": "Emilio Butragueño",
+      "country": "Spain",
+      "goals": 5,
+      "matches": 9,
+      "goals_per_match": 0.56,
+      "tournaments_scored": "1986"
+    },
+    {
+      "rank": 67,
+      "player": "Roger Milla",
+      "country": "Cameroon",
+      "goals": 5,
+      "matches": 9,
+      "goals_per_match": 0.56,
+      "tournaments_scored": "1990, 1994"
+    },
+    {
+      "rank": 67,
+      "player": "Tim Cahill",
+      "country": "Australia",
+      "goals": 5,
+      "matches": 9,
+      "goals_per_match": 0.56,
+      "tournaments_scored": "2006, 2010, 2014"
+    },
+    {
+      "rank": 67,
+      "player": "Hans Krankl",
+      "country": "Austria",
+      "goals": 5,
+      "matches": 10,
+      "goals_per_match": 0.5,
+      "tournaments_scored": "1978, 1982"
+    },
+    {
+      "rank": 67,
+      "player": "Raúl",
+      "country": "Spain",
+      "goals": 5,
+      "matches": 11,
+      "goals_per_match": 0.45,
+      "tournaments_scored": "1998, 2002, 2006"
+    },
+    {
+      "rank": 67,
+      "player": "Garrincha",
+      "country": "Brazil",
+      "goals": 5,
+      "matches": 12,
+      "goals_per_match": 0.42,
+      "tournaments_scored": "1962, 1966"
+    },
+    {
+      "rank": 67,
+      "player": "Johan Neeskens",
+      "country": "Netherlands",
+      "goals": 5,
+      "matches": 12,
+      "goals_per_match": 0.42,
+      "tournaments_scored": "1974"
+    },
+    {
+      "rank": 67,
+      "player": "Fernando Hierro",
+      "country": "Spain",
+      "goals": 5,
+      "matches": 12,
+      "goals_per_match": 0.42,
+      "tournaments_scored": "1994, 1998, 2002"
+    },
+    {
+      "rank": 67,
+      "player": "Zinedine Zidane",
+      "country": "France",
+      "goals": 5,
+      "matches": 12,
+      "goals_per_match": 0.42,
+      "tournaments_scored": "1998, 2006"
+    },
+    {
+      "rank": 67,
+      "player": "Landon Donovan",
+      "country": "United States",
+      "goals": 5,
+      "matches": 12,
+      "goals_per_match": 0.42,
+      "tournaments_scored": "2002, 2010"
+    },
+    {
+      "rank": 67,
+      "player": "Romelu Lukaku",
+      "country": "Belgium",
+      "goals": 5,
+      "matches": 12,
+      "goals_per_match": 0.42,
+      "tournaments_scored": "2014, 2018"
+    },
+    {
+      "rank": 67,
+      "player": "Xherdan Shaqiri",
+      "country": "Switzerland",
+      "goals": 5,
+      "matches": 12,
+      "goals_per_match": 0.42,
+      "tournaments_scored": "2014, 2018, 2022"
+    },
+    {
+      "rank": 67,
+      "player": "Henrik Larsson",
+      "country": "Sweden",
+      "goals": 5,
+      "matches": 13,
+      "goals_per_match": 0.38,
+      "tournaments_scored": "1994, 2002, 2006"
+    },
+    {
+      "rank": 67,
+      "player": "Michel Platini",
+      "country": "France",
+      "goals": 5,
+      "matches": 14,
+      "goals_per_match": 0.36,
+      "tournaments_scored": "1978, 1982, 1986"
+    },
+    {
+      "rank": 67,
+      "player": "Zico",
+      "country": "Brazil",
+      "goals": 5,
+      "matches": 14,
+      "goals_per_match": 0.36,
+      "tournaments_scored": "1978, 1982"
+    },
+    {
+      "rank": 67,
+      "player": "Gonzalo Higuaín",
+      "country": "Argentina",
+      "goals": 5,
+      "matches": 14,
+      "goals_per_match": 0.36,
+      "tournaments_scored": "2010, 2014"
+    },
+    {
+      "rank": 67,
+      "player": "Lukas Podolski",
+      "country": "Germany",
+      "goals": 5,
+      "matches": 15,
+      "goals_per_match": 0.33,
+      "tournaments_scored": "2006, 2010, 2014"
+    },
+    {
+      "rank": 67,
+      "player": "Edinson Cavani",
+      "country": "Uruguay",
+      "goals": 5,
+      "matches": 17,
+      "goals_per_match": 0.29,
+      "tournaments_scored": "2010, 2014, 2018"
+    },
+    {
+      "rank": 67,
+      "player": "Franz Beckenbauer",
+      "country": "West Germany",
+      "goals": 5,
+      "matches": 18,
+      "goals_per_match": 0.28,
+      "tournaments_scored": "1966, 1970"
+    },
+    {
+      "rank": 67,
+      "player": "Olivier Giroud",
+      "country": "France",
+      "goals": 5,
+      "matches": 18,
+      "goals_per_match": 0.28,
+      "tournaments_scored": "2014, 2022"
+    }
+  ]
+}
