@@ -26,7 +26,12 @@ function TeamLine({ slot }: { slot: BracketSlot }) {
       {slot.live && <span className="bk-live" title="Live" />}
       {slot.locked && <span className="lk">🔒</span>}
       {!slot.locked && slot.seed && <span className="seed">{slot.seed}</span>}
-      {slot.score != null && <span className="msc">{slot.score}</span>}
+      {slot.score != null && (
+        <span className="msc">
+          {slot.score}
+          {slot.shootout != null && <span className="mpen"> ({slot.shootout})</span>}
+        </span>
+      )}
     </div>
   );
 }

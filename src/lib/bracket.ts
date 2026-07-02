@@ -31,6 +31,8 @@ export interface BracketSlot {
   locked?: boolean;
   /** Score to show once the match has started. */
   score?: number;
+  /** Penalty-shootout goals for this side (knockouts decided on penalties). */
+  shootout?: number | null;
   /** This side won a completed match (green highlight). */
   advanced?: boolean;
   /** This side is in a match currently in progress (red live dot). */
@@ -79,11 +81,13 @@ function slotFromCompetitor(
   score: number,
   status: Match['status'],
   won: boolean,
+  shootout: number | null,
 ): BracketSlot {
   if (isPlaceholderName(team.name)) return { label: team.name };
   return {
     team,
     score: status === 'pre' ? undefined : score,
+    shootout,
     advanced: status === 'post' && won,
     live: status === 'in',
   };
@@ -105,11 +109,11 @@ function buildFromEspn(matches: Match[]): BracketRoundView[] {
           date: fmtDate(m.kickoffUtc),
           home: slotFromCompetitor(
             { flag: m.homeTeam.flag, name: m.homeTeam.name, abbr: m.homeTeam.abbreviation, fifaRank: rankFor(m.homeTeam.abbreviation) },
-            hs, m.status, m.winner === 'home',
+            hs, m.status, m.winner === 'home', m.homeShootout,
           ),
           away: slotFromCompetitor(
             { flag: m.awayTeam.flag, name: m.awayTeam.name, abbr: m.awayTeam.abbreviation, fifaRank: rankFor(m.awayTeam.abbreviation) },
-            as, m.status, m.winner === 'away',
+            as, m.status, m.winner === 'away', m.awayShootout,
           ),
           upset: getUpset(m)?.text,
         };
