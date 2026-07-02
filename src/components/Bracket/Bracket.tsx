@@ -67,10 +67,16 @@ export function Bracket({ matches, standings }: { matches: Match[]; standings: G
                     </div>
                   );
                 }
+                const penalties = match.home.shootout != null || match.away.shootout != null;
                 return (
                   <div className={`m32${match.upset ? ' shock' : ''}`} key={i}>
-                    {match.upset && (
-                      <div className="m32-shock" title={`⚡ ${match.upset}`}>⚡ Shocker</div>
+                    {(penalties || match.upset) && (
+                      <div className="m32-tags">
+                        {penalties && <span className="pen-tag">Penalties</span>}
+                        {match.upset && (
+                          <span className="shocker-tag" title={`⚡ ${match.upset}`}>⚡ Shocker</span>
+                        )}
+                      </div>
                     )}
                     <div className="mloc">
                       <span>{match.venue}</span>

@@ -257,10 +257,15 @@ html.light .show-all { background:#efe8d6; }
 .rc-side.away .rc-abbr { color:var(--muted); }
 .rc-mid { display:flex; flex-direction:column; align-items:center; gap:.25rem; }
 .rc-score {
-  background:rgba(255,70,72,.12); border:1px solid rgba(255,70,72,.28); border-radius:6px;
+  background:var(--panel2); border:1px solid var(--line); border-radius:6px;
   padding:.28rem .8rem; font-weight:700; font-variant-numeric:tabular-nums;
   white-space:nowrap; letter-spacing:.06em;
 }
+/* SHOCKER result — whole card tinted light tomato */
+.res-card.shock { background:rgba(255,99,71,.13); border-color:rgba(255,99,71,.4); }
+.res-card.shock .rc-score { background:rgba(255,99,71,.16); border-color:rgba(255,99,71,.4); }
+/* round-type tag, top-right of each result card */
+.rc-round-pos { position:absolute; top:-7px; right:8px; z-index:2; }
 .pen-tag {
   font-size:.5rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
   color:var(--blue); border:1px solid var(--blue); border-radius:3px;
@@ -426,11 +431,9 @@ html.light .trace th { background:#efe8d6; }
 .mteam .msc { font-weight:700; font-variant-numeric:tabular-nums; color:var(--text); font-family:var(--mono); margin-left:.3rem; }
 .mteam .mpen { color:var(--blue); font-weight:700; font-size:.9em; }
 .m32.shock { box-shadow:inset 3px 0 0 #ff1744; }
-.m32-shock {
-  display:flex; align-items:center; gap:.2rem;
-  font-size:.5rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
-  color:#fff; background:#ff1744; border-bottom:1px solid rgba(255,23,68,.4);
-  padding:.2rem .5rem; cursor:default;
+.m32-tags {
+  display:flex; align-items:center; gap:.3rem; flex-wrap:wrap;
+  padding:.3rem .5rem; border-bottom:1px solid var(--line);
 }
 .mph { padding:.1rem 0; }
 .mph .phl { font-size:.74rem; color:var(--muted); padding:.34rem .5rem; }

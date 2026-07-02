@@ -1,6 +1,7 @@
 import type { Match, CardEvent } from '../../lib/types';
 import { rankFor } from '../../lib/rankings';
 import { getUpset } from '../../lib/upsets';
+import { ROUND_CLASS, ROUND_SHORT } from '../../lib/roundColors';
 import { Tooltip } from '../Tooltip/Tooltip';
 
 export function ResultRow({ match }: { match: Match }) {
@@ -20,6 +21,7 @@ export function ResultRow({ match }: { match: Match }) {
   const away = cardsFor(awayAbbr);
 
   const upset = getUpset(match);
+  const roundLabel = match.round ?? 'Group Stage';
   const hasShootout = match.homeShootout != null && match.awayShootout != null;
   const homeText = hasShootout ? `${homeScore} (${match.homeShootout})` : `${homeScore}`;
   const awayText = hasShootout ? `${awayScore} (${match.awayShootout})` : `${awayScore}`;
@@ -52,7 +54,7 @@ export function ResultRow({ match }: { match: Match }) {
   );
 
   return (
-    <div className="res-card">
+    <div className={`res-card${upset ? ' shock' : ''}`}>
       {upset && (
         <span className="rc-shock-pos">
           <Tooltip lines={[<>⚡ {upset.text}</>]} align="left">
@@ -60,6 +62,11 @@ export function ResultRow({ match }: { match: Match }) {
           </Tooltip>
         </span>
       )}
+      <span className="rc-round-pos">
+        <span className={`goal-round ${ROUND_CLASS[roundLabel] ?? ''}`}>
+          {ROUND_SHORT[roundLabel] ?? roundLabel}
+        </span>
+      </span>
       <span className="rc-side">
         <span className="fl">{match.homeTeam.flag}</span>
         <span className="rc-abbr">{homeAbbr}</span>
