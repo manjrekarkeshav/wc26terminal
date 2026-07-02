@@ -85,7 +85,12 @@
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Mark Golden Boot scorers with team status \\(🟢 in / ❌ eliminated\\) *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Show red Delayed badge in Happening Now for delayed/postponed fixtures *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Update Golden Boot status tooltips \\(Still alive / Eliminated from WC '\\\\''26\\) *)",
-      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Golden Boot tooltip: per-goal round banners + alive/eliminated footer *)"
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Golden Boot tooltip: per-goal round banners + alive/eliminated footer *)",
+      "Bash(git fetch *)",
+      "Bash(git commit --allow-empty -m 'Trigger Cloudflare rebuild \\(deploy latest Golden Boot tooltip changes\\) *)",
+      "Bash(npx --yes wrangler@4 whoami)",
+      "Bash(npx --yes wrangler@4 deploy --dry-run)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Flag SHOCKER upsets \\(rank gap >=20, favorite fails to win\\) in results + bracket *)"
     ]
   }
 }

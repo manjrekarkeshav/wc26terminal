@@ -12,6 +12,7 @@
 
 import type { GroupStanding, GroupTeamRow, Match } from './types';
 import { rankFor } from './rankings';
+import { getUpset } from './upsets';
 
 export interface BracketTeam {
   flag: string;
@@ -42,6 +43,8 @@ export interface BracketMatchView {
   date: string;
   home: BracketSlot;
   away: BracketSlot;
+  /** Set when the completed match was a SHOCKER upset; holds the explanatory text. */
+  upset?: string;
 }
 
 export interface BracketRoundView {
@@ -108,6 +111,7 @@ function buildFromEspn(matches: Match[]): BracketRoundView[] {
             { flag: m.awayTeam.flag, name: m.awayTeam.name, abbr: m.awayTeam.abbreviation, fifaRank: rankFor(m.awayTeam.abbreviation) },
             as, m.status, m.winner === 'away',
           ),
+          upset: getUpset(m)?.text,
         };
       });
     return { label, spread: slug !== 'round-of-32', matches: roundMatches };

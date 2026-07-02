@@ -265,6 +265,13 @@ html.light .show-all { background:#efe8d6; }
   color:var(--blue); border:1px solid var(--blue); border-radius:3px;
   padding:.05rem .3rem; background:rgba(74,158,255,.12); line-height:1.2;
 }
+/* SHOCKER — filled purple, distinct from the outlined round pills */
+.shocker-tag {
+  display:inline-flex; align-items:center; font-size:.5rem; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase; color:#fff;
+  background:#a855f7; border:1px solid #a855f7; border-radius:3px;
+  padding:.06rem .34rem; line-height:1.2; cursor:default; white-space:nowrap;
+}
 .yc, .redc {
   display:inline-flex; align-items:center; justify-content:center;
   min-width:9px; height:14px; padding:0 .12rem;
@@ -413,6 +420,13 @@ html.light .trace th { background:#efe8d6; }
 .mteam.adv .nm { color:var(--green); }
 .mteam .seed { font-size:.56rem; color:var(--dim); margin-left:.2rem; }
 .mteam .msc { font-weight:700; font-variant-numeric:tabular-nums; color:var(--text); font-family:var(--mono); margin-left:.3rem; }
+.m32.shock { box-shadow:inset 3px 0 0 #a855f7; }
+.m32-shock {
+  display:flex; align-items:center; gap:.2rem;
+  font-size:.5rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:#c99af0; background:rgba(168,85,247,.15); border-top:1px solid var(--line);
+  padding:.2rem .5rem; cursor:default;
+}
 .mph { padding:.1rem 0; }
 .mph .phl { font-size:.74rem; color:var(--muted); padding:.34rem .5rem; }
 .mph .phl + .phl { border-top:1px solid var(--line); }

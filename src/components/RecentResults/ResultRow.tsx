@@ -1,5 +1,6 @@
 import type { Match, CardEvent } from '../../lib/types';
 import { rankFor } from '../../lib/rankings';
+import { getUpset } from '../../lib/upsets';
 import { Tooltip } from '../Tooltip/Tooltip';
 
 export function ResultRow({ match }: { match: Match }) {
@@ -18,6 +19,7 @@ export function ResultRow({ match }: { match: Match }) {
   const home = cardsFor(homeAbbr);
   const away = cardsFor(awayAbbr);
 
+  const upset = getUpset(match);
   const hasShootout = match.homeShootout != null && match.awayShootout != null;
   const homeText = hasShootout ? `${homeScore} (${match.homeShootout})` : `${homeScore}`;
   const awayText = hasShootout ? `${awayScore} (${match.awayShootout})` : `${awayScore}`;
@@ -62,6 +64,11 @@ export function ResultRow({ match }: { match: Match }) {
         <Tooltip lines={goalLines} align="left">
           <span className="rc-score">{homeText} – {awayText}</span>
         </Tooltip>
+        {upset && (
+          <Tooltip lines={[<>⚡ {upset.text}</>]} align="left">
+            <span className="shocker-tag">⚡ Shocker</span>
+          </Tooltip>
+        )}
         {hasShootout && <span className="pen-tag">Penalties</span>}
       </span>
 
