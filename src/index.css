@@ -522,6 +522,14 @@ html.light .foot { background:#efe8d6; }
   /* one card per row everywhere a min-width would otherwise overflow */
   .results-grid, .sa-grid, .groups { grid-template-columns:1fr; }
 
+  /* Recent Results: tighter cards + gaps */
+  .results-grid { gap:8px; }
+  .res-card { padding:.42rem .7rem; }
+
+  /* Golden Boot: tighter scorer rows */
+  .scorer { padding:.38rem .7rem; }
+  .phead { padding:.55rem .7rem; }
+
   /* live card: a touch tighter */
   .lc-name, .lc-head .grp { font-size:.95rem; }
   .lc-head .grp { font-size:.6rem; }
