@@ -455,8 +455,8 @@ html.light .trace th { background:#efe8d6; }
 .bk-c5 { --bk:#d76d9c; } /* Final — rose         */
 .bk-cg { --bk:#8a94a3; } /* Group stage — slate  */
 .bk-col[class*="bk-c"] .bk-head { color:var(--bk); }
-.bk-col[class*="bk-c"] > .m32,
-.bk-col[class*="bk-c"] > .mph { border-top:2px solid var(--bk); }
+.bk-col[class*="bk-c"] .bk-matches > .m32,
+.bk-col[class*="bk-c"] .bk-matches > .mph { border-top:2px solid var(--bk); }
 /* keep the 3rd-place sub-header its own muted gold, not the Final color */
 .bk-col .bk3rd .bk-head { color:var(--amber-dim); }
 
