@@ -413,8 +413,13 @@ html.light .trace th { background:#efe8d6; }
 /* ─── Bracket ────────────────────────────────────────────────── */
 .bracket-wrap { overflow-x:auto; padding:0 16px; }
 .bracket-cols { display:flex; gap:14px; padding:4px 0 8px; }
-.bk-col { flex:1 1 0; min-width:148px; display:flex; flex-direction:column; gap:12px; }
-.bk-col.spread { justify-content:flex-start; }
+.bk-col { flex:1 1 0; min-width:148px; display:flex; flex-direction:column; }
+/* header pinned at top; match boxes fill + distribute below */
+.bk-matches { flex:1; display:flex; flex-direction:column; gap:12px; padding-top:12px; }
+/* spread rounds distribute their matches to line up with their feeder matches */
+.bk-col.spread .bk-matches { justify-content:space-around; }
+/* final column keeps the final + 3rd-place grouped near centre */
+.bk-col.final-col .bk-matches { justify-content:center; gap:14px; }
 .bk-head {
   font-size:.64rem; letter-spacing:.16em; text-transform:uppercase;
   color:var(--muted); text-align:center; padding:.3rem 0 .4rem;

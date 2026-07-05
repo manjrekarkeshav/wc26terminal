@@ -49,8 +49,9 @@ export function Bracket({ matches, standings }: { matches: Match[]; standings: G
       <div className="bracket-wrap">
         <div className="bracket-cols">
           {rounds.map((round) => (
-            <div key={round.label} className={`bk-col${round.spread ? ' spread' : ''} ${ROUND_CLASS[round.label] ?? ''}`}>
+            <div key={round.label} className={`bk-col${round.spread ? ' spread' : ''}${round.label === 'Final' ? ' final-col' : ''} ${ROUND_CLASS[round.label] ?? ''}`}>
               <div className="bk-head">{round.label}</div>
+              <div className="bk-matches">
               {round.matches.map((match, i) => {
                 const bothPlaceholder = match.home.label != null && match.away.label != null;
                 if (bothPlaceholder) {
@@ -100,6 +101,7 @@ export function Bracket({ matches, standings }: { matches: Match[]; standings: G
                   </div>
                 </div>
               )}
+              </div>
             </div>
           ))}
         </div>
