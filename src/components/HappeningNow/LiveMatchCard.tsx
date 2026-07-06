@@ -2,6 +2,7 @@ import type { Match } from '../../lib/types';
 import type { WinProbMap } from '../../lib/winprob';
 import { ScorerLine } from './ScorerLine';
 import { LiveWinProb } from '../WinProbBar/WinProbBar';
+import { MatchStats } from '../MatchStats/MatchStats';
 
 function startsIn(kickoffUtc: string): string {
   const diff = new Date(kickoffUtc).getTime() - Date.now();
@@ -48,6 +49,14 @@ export function LiveMatchCard({ match, pm }: { match: Match; pm: WinProbMap | nu
       </div>
       <LiveWinProb match={match} pm={pm} />
       <ScorerLine goals={match.goals} />
+      {match.homeStats && match.awayStats && (
+        <MatchStats
+          home={match.homeStats}
+          away={match.awayStats}
+          homeAbbr={match.homeTeam.abbreviation}
+          awayAbbr={match.awayTeam.abbreviation}
+        />
+      )}
     </article>
   );
 }

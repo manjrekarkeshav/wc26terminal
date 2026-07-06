@@ -436,6 +436,35 @@ html.light .trace th { background:#efe8d6; }
 .mteam .seed { font-size:.56rem; color:var(--dim); margin-left:.2rem; }
 .mteam .msc { font-weight:700; font-variant-numeric:tabular-nums; color:var(--text); font-family:var(--mono); margin-left:.3rem; }
 .mteam .mpen { color:var(--blue); font-weight:700; font-size:.9em; }
+
+/* ─── Match stats (table + possession bar) ───────────────────── */
+.match-stats { padding:.55rem .3rem .1rem; font-size:.7rem; }
+.match-stats .ms-bar { display:flex; height:5px; border-radius:2px; overflow:hidden; background:#26292c; margin-bottom:.5rem; }
+html.light .match-stats .ms-bar { background:#ddd5c0; }
+.match-stats .ms-bar i { display:block; height:100%; }
+.match-stats .ms-bar i.home { background:var(--wp-home); }
+.match-stats .ms-bar i.away { background:var(--wp-away); }
+.ms-head, .ms-row { display:grid; grid-template-columns:2.6rem 1fr 2.6rem; align-items:center; }
+.ms-row { padding:.16rem 0; border-top:1px solid var(--line); }
+.ms-head { padding-bottom:.2rem; }
+.ms-head .ms-team { font-weight:700; color:var(--text); }
+.ms-head .ms-lab { color:var(--dim); font-size:.56rem; letter-spacing:.14em; text-transform:uppercase; }
+.ms-lab { text-align:center; color:var(--muted); font-size:.62rem; }
+.ms-h { text-align:left; font-family:var(--mono); font-variant-numeric:tabular-nums; color:var(--text); }
+.ms-a { text-align:right; font-family:var(--mono); font-variant-numeric:tabular-nums; color:var(--text); }
+/* live cards get a top divider before the inline stats */
+.live-card .match-stats { border-top:1px solid rgba(70,240,138,.16); margin-top:.1rem; padding:.6rem .85rem .75rem; }
+
+/* ─── Hover card (viewport-anchored, escapes overflow clipping) ─ */
+.hovercard-trigger { display:block; outline:none; }
+.hovercard-trigger:focus-visible { outline:2px solid var(--amber); outline-offset:2px; }
+.hovercard {
+  position:fixed; transform:translate(-50%, calc(-100% - 8px)); z-index:100;
+  width:max-content; min-width:190px; max-width:260px;
+  background:var(--panel2); border:1px solid var(--line2); border-radius:8px;
+  padding:.35rem .6rem .5rem; box-shadow:0 12px 30px rgba(0,0,0,.5);
+  pointer-events:none;
+}
 .m32.shock { box-shadow:inset 3px 0 0 #ff1744; }
 .m32-tags {
   display:flex; align-items:center; gap:.3rem; flex-wrap:wrap;
@@ -455,8 +484,8 @@ html.light .trace th { background:#efe8d6; }
 .bk-c5 { --bk:#d76d9c; } /* Final — rose         */
 .bk-cg { --bk:#8a94a3; } /* Group stage — slate  */
 .bk-col[class*="bk-c"] .bk-head { color:var(--bk); }
-.bk-col[class*="bk-c"] .bk-matches > .m32,
-.bk-col[class*="bk-c"] .bk-matches > .mph { border-top:2px solid var(--bk); }
+.bk-col[class*="bk-c"] .bk-matches .m32,
+.bk-col[class*="bk-c"] .bk-matches .mph { border-top:2px solid var(--bk); }
 /* keep the 3rd-place sub-header its own muted gold, not the Final color */
 .bk-col .bk3rd .bk-head { color:var(--amber-dim); }
 

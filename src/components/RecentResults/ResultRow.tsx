@@ -3,6 +3,8 @@ import { rankFor } from '../../lib/rankings';
 import { getUpset } from '../../lib/upsets';
 import { ROUND_CLASS, ROUND_SHORT } from '../../lib/roundColors';
 import { Tooltip } from '../Tooltip/Tooltip';
+import { HoverCard } from '../HoverCard/HoverCard';
+import { MatchStats } from '../MatchStats/MatchStats';
 
 export function ResultRow({ match }: { match: Match }) {
   const homeScore = match.homeScore ?? 0;
@@ -53,7 +55,13 @@ export function ResultRow({ match }: { match: Match }) {
     </>
   );
 
+  const stats =
+    match.homeStats && match.awayStats ? (
+      <MatchStats home={match.homeStats} away={match.awayStats} homeAbbr={homeAbbr} awayAbbr={awayAbbr} />
+    ) : null;
+
   return (
+    <HoverCard content={stats} className="rc-hc">
     <div className={`res-card${upset ? ' shock' : ''}`}>
       {upset && (
         <span className="rc-shock-pos">
@@ -88,5 +96,6 @@ export function ResultRow({ match }: { match: Match }) {
         {cardBoxes(away, 'away')}
       </span>
     </div>
+    </HoverCard>
   );
 }

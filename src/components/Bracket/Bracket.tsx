@@ -7,6 +7,8 @@
 import type { GroupStanding, Match } from '../../lib/types';
 import { computeBracket, type BracketSlot } from '../../lib/bracket';
 import { ROUND_CLASS } from '../../lib/roundColors';
+import { HoverCard } from '../HoverCard/HoverCard';
+import { MatchStats } from '../MatchStats/MatchStats';
 
 function TeamLine({ slot }: { slot: BracketSlot }) {
   if (!slot.team) {
@@ -69,8 +71,18 @@ export function Bracket({ matches, standings }: { matches: Match[]; standings: G
                   );
                 }
                 const penalties = match.home.shootout != null || match.away.shootout != null;
+                const statsContent =
+                  match.stats && match.home.team && match.away.team ? (
+                    <MatchStats
+                      home={match.stats.home}
+                      away={match.stats.away}
+                      homeAbbr={match.home.team.abbr}
+                      awayAbbr={match.away.team.abbr}
+                    />
+                  ) : null;
                 return (
-                  <div className={`m32${match.upset ? ' shock' : ''}`} key={i}>
+                  <HoverCard content={statsContent} key={i}>
+                  <div className={`m32${match.upset ? ' shock' : ''}`}>
                     {(penalties || match.upset) && (
                       <div className="m32-tags">
                         {penalties && <span className="pen-tag">Penalties</span>}
@@ -86,6 +98,7 @@ export function Bracket({ matches, standings }: { matches: Match[]; standings: G
                     <TeamLine slot={match.home} />
                     <TeamLine slot={match.away} />
                   </div>
+                  </HoverCard>
                 );
               })}
               {round.label === 'Final' && thirdPlace && thirdPlace.matches[0] && (

@@ -20,6 +20,14 @@ export interface CardEvent {
   color: 'yellow' | 'red';
 }
 
+export interface TeamStats {
+  possession: number | null; // %
+  shots: number | null;
+  shotsOnTarget: number | null;
+  corners: number | null;
+  fouls: number | null;
+}
+
 export interface Match {
   id: string;
   status: MatchStatus;
@@ -46,6 +54,9 @@ export interface Match {
   winner: 'home' | 'away' | null;
   /** True when ESPN reports the fixture as delayed/postponed (kickoff pushed back). */
   delayed: boolean;
+  /** Team match stats (possession, shots, …); null for pre-match fixtures. */
+  homeStats: TeamStats | null;
+  awayStats: TeamStats | null;
 }
 
 export interface GroupTeamRow {

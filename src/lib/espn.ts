@@ -8,7 +8,7 @@
  * This is an unofficial API; treat as best-effort.
  */
 
-import type { Match, Team, Goal, CardEvent, MatchStatus, DataResponse } from './types';
+import type { Match, Team, Goal, CardEvent, TeamStats, MatchStatus, DataResponse } from './types';
 
 // ESPN season.slug → human round label (knockouts only; group-stage has no pill).
 const ROUND_LABELS: Record<string, string> = {
@@ -151,6 +151,31 @@ function extractCards(event: Record<string, unknown>): CardEvent[] {
   return cards;
 }
 
+/** Parse a competitor's `statistics` array into the five stats we display. */
+function extractStats(competitor: Record<string, unknown>): TeamStats | null {
+  const stats = competitor.statistics as Record<string, unknown>[] | undefined;
+  if (!stats || stats.length === 0) return null;
+
+  const byName: Record<string, number> = {};
+  for (const s of stats) {
+    const name = String(s.name ?? '');
+    const raw = s.value ?? s.displayValue;
+    const num = Number(raw);
+    if (name && Number.isFinite(num)) byName[name] = num;
+  }
+  const pick = (name: string): number | null =>
+    name in byName ? byName[name] : null;
+
+  const poss = pick('possessionPct');
+  return {
+    possession: poss != null ? Math.round(poss) : null,
+    shots: pick('totalShots'),
+    shotsOnTarget: pick('shotsOnTarget'),
+    corners: pick('wonCorners'),
+    fouls: pick('foulsCommitted'),
+  };
+}
+
 function extractGroup(event: Record<string, unknown>): string | null {
   const comps = event.competitions as Record<string, unknown>[] | undefined;
   const comp = comps?.[0];
@@ -233,6 +258,8 @@ export function normalizeEvent(event: Record<string, unknown>): Match {
     awayShootout: status === 'post' ? awaySO : null,
     winner,
     delayed: isDelayed(event),
+    homeStats: status !== 'pre' ? extractStats(homeComp) : null,
+    awayStats: status !== 'pre' ? extractStats(awayComp) : null,
   };
 }
 
