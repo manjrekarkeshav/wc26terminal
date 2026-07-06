@@ -55,13 +55,28 @@ export function ResultRow({ match }: { match: Match }) {
     </>
   );
 
-  const stats =
+  // One merged hover panel: goal scorers + match stats.
+  const goalsBlock =
+    goalLines.length > 0 ? (
+      <div className="hc-goals">
+        {goalLines.map((g, i) => (
+          <div className="tip-line" key={i}>{g}</div>
+        ))}
+      </div>
+    ) : null;
+  const statsBlock =
     match.homeStats && match.awayStats ? (
       <MatchStats home={match.homeStats} away={match.awayStats} homeAbbr={homeAbbr} awayAbbr={awayAbbr} />
     ) : null;
+  const hoverContent = goalsBlock || statsBlock ? (
+    <>
+      {goalsBlock}
+      {statsBlock}
+    </>
+  ) : null;
 
   return (
-    <HoverCard content={stats} className="rc-hc">
+    <HoverCard content={hoverContent} className="rc-hc">
     <div className={`res-card${upset ? ' shock' : ''}`}>
       {upset && (
         <span className="rc-shock-pos">
@@ -83,9 +98,7 @@ export function ResultRow({ match }: { match: Match }) {
       </span>
 
       <span className="rc-mid">
-        <Tooltip lines={goalLines} align="left">
-          <span className="rc-score">{homeText} – {awayText}</span>
-        </Tooltip>
+        <span className="rc-score">{homeText} – {awayText}</span>
         {hasShootout && <span className="pen-tag">Penalties</span>}
       </span>
 

@@ -455,6 +455,10 @@ html.light .match-stats .ms-bar { background:#ddd5c0; }
 /* live cards get a top divider before the inline stats */
 .live-card .match-stats { border-top:1px solid rgba(70,240,138,.16); margin-top:.1rem; padding:.6rem .85rem .75rem; }
 
+/* goals list inside the merged hover panel */
+.hc-goals { display:flex; flex-direction:column; gap:.2rem; font-size:.66rem; color:var(--muted); }
+.hc-goals + .match-stats { border-top:1px solid var(--line2); margin-top:.4rem; }
+
 /* ─── Hover card (viewport-anchored, escapes overflow clipping) ─ */
 .hovercard-trigger { display:block; outline:none; }
 .hovercard-trigger:focus-visible { outline:2px solid var(--amber); outline-offset:2px; }
