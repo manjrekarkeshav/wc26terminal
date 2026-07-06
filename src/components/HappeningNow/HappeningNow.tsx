@@ -2,23 +2,12 @@ import type { Match } from '../../lib/types';
 import type { WinProbMap } from '../../lib/winprob';
 import { LiveMatchCard } from './LiveMatchCard';
 import { Countdown } from '../Upcoming/Countdown';
-
-const SOON_WINDOW_MS = 30 * 60 * 1000; // show fixtures starting within 30 minutes
+import { isHappeningNow } from '../../lib/live';
 
 export function HappeningNow({ matches, pm }: { matches: Match[]; pm: WinProbMap | null }) {
   const now = Date.now();
   const liveMatches = matches
-    .filter((m) => {
-      if (m.status === 'in') return true;
-      // Delayed fixtures surface here regardless of their (stale) scheduled time
-      if (m.delayed && m.status !== 'post') return true;
-      // Pre-match starting within the next 30 minutes
-      if (m.status === 'pre') {
-        const diff = new Date(m.kickoffUtc).getTime() - now;
-        return diff > 0 && diff <= SOON_WINDOW_MS;
-      }
-      return false;
-    })
+    .filter((m) => isHappeningNow(m, now))
     .sort((a, b) => new Date(a.kickoffUtc).getTime() - new Date(b.kickoffUtc).getTime());
 
   // Next upcoming fixture (for the empty-state countdown)

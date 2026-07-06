@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { Match } from '../../lib/types';
 import type { WinProbMap } from '../../lib/winprob';
 import { useFilter } from '../../context/FilterContext';
+import { isHappeningNow } from '../../lib/live';
 import { FixtureRow } from './FixtureRow';
 
 function matchesFilter(match: Match, team: string, location: string): boolean {
@@ -27,12 +28,14 @@ export function Upcoming({ matches, pm }: { matches: Match[]; pm: WinProbMap | n
   const { team, location } = useFilter();
   const [showAll, setShowAll] = useState(false);
 
+  // Matches already surfaced in "Happening now" (live / delayed / within 30 min) are
+  // excluded so a fixture never shows in both sections.
   const upcoming = matches
-    .filter((m) => m.status === 'pre')
+    .filter((m) => m.status === 'pre' && !isHappeningNow(m))
     .filter((m) => matchesFilter(m, team, location))
     .sort((a, b) => new Date(a.kickoffUtc).getTime() - new Date(b.kickoffUtc).getTime());
 
-  const totalUpcoming = matches.filter((m) => m.status === 'pre').length;
+  const totalUpcoming = matches.filter((m) => m.status === 'pre' && !isHappeningNow(m)).length;
   const visible = showAll ? upcoming : upcoming.slice(0, INITIAL_LIMIT);
 
   // Group visible fixtures by day, preserving chronological order.
