@@ -10,7 +10,7 @@ A live, information-dense **2026 FIFA World Cup dashboard** with a Bloomberg-ter
 
 ## Features
 
-- **Happening Now** — live match cards with scores, match clock, scorers, and win-probability bars. Fixtures appear 30 minutes before kickoff, the empty state counts down to the next kickoff, and a red **Delayed** badge surfaces postponed matches.
+- **Happening Now** — live match cards with scores, match clock, scorers, and win-probability bars. Fixtures appear 30 minutes before kickoff (and drop out of Upcoming so they never show twice), the empty state counts down to the next kickoff, and a red **Delayed** badge surfaces postponed matches.
 - **Upcoming** — day-grouped fixtures with local kickoff times, live countdowns, colour-coded round tags, and win-probability bars showing both nations.
 - **Recent Results** — final-score cards with:
   - goal scorers on hover, and **yellow + red card** detail (who and when);
@@ -23,7 +23,8 @@ A live, information-dense **2026 FIFA World Cup dashboard** with a Bloomberg-ter
 - **Group Standings** — all 12 groups computed client-side from results (points, GD, qualification / elimination) with FIFA rank superscripts and average-rank per group.
 - **3rd-Place Race** — the 8-of-12 best third-place teams ranked by FIFA tiebreakers.
 - **Win probabilities** — Polymarket markets with a FIFA-ranking model fallback (source-tagged).
-- **Filters** (team / location), **dark + light themes**, fully **responsive**, and a graceful **offline fallback** so it never looks broken when live data is down.
+- **Filters** (team / location), **dark + light themes**, and a graceful **offline fallback** so it never looks broken when live data is down.
+- **Fully responsive** — reworked for mobile, where the hover panels (goal scorers + match stats on Recent Results and the Bracket) open on **tap** and stay within the viewport.
 
 ## How it works
 
