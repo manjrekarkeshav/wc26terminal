@@ -71,7 +71,15 @@ export function Bracket({ matches, standings }: { matches: Match[]; standings: G
                   );
                 }
                 const penalties = match.home.shootout != null || match.away.shootout != null;
-                const statsContent =
+                const goals = match.goals ?? [];
+                const goalsBlock = goals.length > 0 ? (
+                  <div className="hc-goals">
+                    {goals.map((g, gi) => (
+                      <div className="tip-line" key={gi}>⚽ {g.minute} {g.scorer} <span className="ab">{g.teamAbbr}</span></div>
+                    ))}
+                  </div>
+                ) : null;
+                const statsBlock =
                   match.stats && match.home.team && match.away.team ? (
                     <MatchStats
                       home={match.stats.home}
@@ -80,8 +88,14 @@ export function Bracket({ matches, standings }: { matches: Match[]; standings: G
                       awayAbbr={match.away.team.abbr}
                     />
                   ) : null;
+                const hoverContent = goalsBlock || statsBlock ? (
+                  <>
+                    {goalsBlock}
+                    {statsBlock}
+                  </>
+                ) : null;
                 return (
-                  <HoverCard content={statsContent} key={i}>
+                  <HoverCard content={hoverContent} key={i}>
                   <div className={`m32${match.upset ? ' shock' : ''}`}>
                     {(penalties || match.upset) && (
                       <div className="m32-tags">

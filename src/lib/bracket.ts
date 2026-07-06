@@ -10,7 +10,7 @@
  * max-bipartite matching for the 8 best third-place teams.
  */
 
-import type { GroupStanding, GroupTeamRow, Match, TeamStats } from './types';
+import type { GroupStanding, GroupTeamRow, Match, TeamStats, Goal } from './types';
 import { rankFor } from './rankings';
 import { getUpset } from './upsets';
 
@@ -49,6 +49,8 @@ export interface BracketMatchView {
   upset?: string;
   /** Team stats for in/post matches (hover panel); undefined for placeholders/pre. */
   stats?: { home: TeamStats; away: TeamStats };
+  /** Goal scorers for the hover panel. */
+  goals?: Goal[];
 }
 
 export interface BracketRoundView {
@@ -140,6 +142,7 @@ function buildFromEspn(matches: Match[]): BracketRoundView[] {
       ),
       upset: getUpset(m)?.text,
       stats: m.homeStats && m.awayStats ? { home: m.homeStats, away: m.awayStats } : undefined,
+      goals: m.goals,
     };
   };
   const build = (label: string) => knockout.filter((m) => m.round === label).map(toView);
