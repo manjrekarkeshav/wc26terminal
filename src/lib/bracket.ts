@@ -55,14 +55,6 @@ export interface BracketRoundView {
   matches: BracketMatchView[];
 }
 
-const ROUND_ORDER: { slug: string; label: string }[] = [
-  { slug: 'round-of-32', label: 'Round of 32' },
-  { slug: 'round-of-16', label: 'Round of 16' },
-  { slug: 'quarterfinals', label: 'Quarterfinals' },
-  { slug: 'semifinals', label: 'Semifinals' },
-  { slug: 'final', label: 'Final' },
-];
-
 const PLACEHOLDER_RE = /(winner|loser|runner|round of|semifinal|quarterfinal|group [a-l])/i;
 
 function isPlaceholderName(name: string): boolean {
@@ -93,33 +85,89 @@ function slotFromCompetitor(
   };
 }
 
+// ─── Bracket ordering (match the official connector-tree layout) ───────────────
+
+/** City portion of a venue string ("Foxborough, MA" → "Foxborough"), for slot matching. */
+function cityOf(venue: string): string {
+  return venue.split(',')[0].trim();
+}
+
+function winnerAbbr(v: BracketMatchView): string | null {
+  if (v.home.advanced && v.home.team) return v.home.team.abbr;
+  if (v.away.advanced && v.away.team) return v.away.team.abbr;
+  return null;
+}
+function viewTeamAbbrs(v: BracketMatchView): string[] {
+  return [v.home.team?.abbr, v.away.team?.abbr].filter((x): x is string => !!x);
+}
+
+/** Order a round so match k pairs the winners of the previous round's matches 2k / 2k+1. */
+function orderByFeeders(prev: BracketMatchView[], current: BracketMatchView[]): BracketMatchView[] {
+  const n = Math.floor(prev.length / 2);
+  const result: (BracketMatchView | undefined)[] = new Array(n).fill(undefined);
+  const pool = [...current];
+  for (let k = 0; k < n; k++) {
+    const feeders = [winnerAbbr(prev[2 * k]), winnerAbbr(prev[2 * k + 1])].filter((x): x is string => !!x);
+    if (feeders.length) {
+      const idx = pool.findIndex((v) => feeders.every((t) => viewTeamAbbrs(v).includes(t)));
+      if (idx >= 0) result[k] = pool.splice(idx, 1)[0];
+    }
+  }
+  let p = 0;
+  for (let k = 0; k < n; k++) if (!result[k]) result[k] = pool[p++];
+  return result.filter((v): v is BracketMatchView => !!v);
+}
+
 function buildFromEspn(matches: Match[]): BracketRoundView[] {
   const knockout = matches.filter((m) => m.round != null);
 
-  const rounds: BracketRoundView[] = ROUND_ORDER.map(({ slug, label }) => {
-    const roundMatches = knockout
-      .filter((m) => m.round === label)
-      .sort((a, b) => new Date(a.kickoffUtc).getTime() - new Date(b.kickoffUtc).getTime())
-      .map((m, i): BracketMatchView => {
-        const hs = m.homeScore ?? 0;
-        const as = m.awayScore ?? 0;
-        return {
-          matchNo: i + 1,
-          venue: m.venue,
-          date: fmtDate(m.kickoffUtc),
-          home: slotFromCompetitor(
-            { flag: m.homeTeam.flag, name: m.homeTeam.name, abbr: m.homeTeam.abbreviation, fifaRank: rankFor(m.homeTeam.abbreviation) },
-            hs, m.status, m.winner === 'home', m.homeShootout,
-          ),
-          away: slotFromCompetitor(
-            { flag: m.awayTeam.flag, name: m.awayTeam.name, abbr: m.awayTeam.abbreviation, fifaRank: rankFor(m.awayTeam.abbreviation) },
-            as, m.status, m.winner === 'away', m.awayShootout,
-          ),
-          upset: getUpset(m)?.text,
-        };
-      });
-    return { label, spread: slug !== 'round-of-32', matches: roundMatches };
-  });
+  const toView = (m: Match, i: number): BracketMatchView => {
+    const hs = m.homeScore ?? 0;
+    const as = m.awayScore ?? 0;
+    return {
+      matchNo: i + 1,
+      venue: m.venue,
+      date: fmtDate(m.kickoffUtc),
+      home: slotFromCompetitor(
+        { flag: m.homeTeam.flag, name: m.homeTeam.name, abbr: m.homeTeam.abbreviation, fifaRank: rankFor(m.homeTeam.abbreviation) },
+        hs, m.status, m.winner === 'home', m.homeShootout,
+      ),
+      away: slotFromCompetitor(
+        { flag: m.awayTeam.flag, name: m.awayTeam.name, abbr: m.awayTeam.abbreviation, fifaRank: rankFor(m.awayTeam.abbreviation) },
+        as, m.status, m.winner === 'away', m.awayShootout,
+      ),
+      upset: getUpset(m)?.text,
+    };
+  };
+  const build = (label: string) => knockout.filter((m) => m.round === label).map(toView);
+
+  // Round of 32 ordered by the official venue sequence (date breaks ties for the two
+  // venues that host two R32 matches), so each later round aligns to its feeders.
+  const rawR32 = knockout.filter((m) => m.round === 'Round of 32');
+  const usedR32 = new Set<Match>();
+  const orderedR32: Match[] = [];
+  for (const slot of R32) {
+    const city = cityOf(slot.venue);
+    const cand = rawR32
+      .filter((m) => !usedR32.has(m) && cityOf(m.venue) === city)
+      .sort((a, b) => new Date(a.kickoffUtc).getTime() - new Date(b.kickoffUtc).getTime())[0];
+    if (cand) { orderedR32.push(cand); usedR32.add(cand); }
+  }
+  for (const m of rawR32) if (!usedR32.has(m)) orderedR32.push(m);
+  const r32 = orderedR32.map(toView);
+
+  const r16 = orderByFeeders(r32, build('Round of 16'));
+  const qf = orderByFeeders(r16, build('Quarterfinals'));
+  const sf = orderByFeeders(qf, build('Semifinals'));
+  const fin = build('Final');
+
+  const rounds: BracketRoundView[] = [
+    { label: 'Round of 32', spread: false, matches: r32 },
+    { label: 'Round of 16', spread: true, matches: r16 },
+    { label: 'Quarterfinals', spread: true, matches: qf },
+    { label: 'Semifinals', spread: true, matches: sf },
+    { label: 'Final', spread: true, matches: fin },
+  ];
 
   // 3rd-place match (rendered under Final by the component).
   const third = knockout

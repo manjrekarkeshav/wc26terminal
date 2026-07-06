@@ -105,7 +105,8 @@
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Add country flags to next-kickoff line in Happening Now empty state *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'All-time scorers: show West Germany as GER for consistency *)",
       "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Bracket: spread rounds into a connector tree \\(matches aligned to their feeders\\) *)",
-      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Bracket: restore per-round color borders after wrapping matches in .bk-matches *)"
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Bracket: restore per-round color borders after wrapping matches in .bk-matches *)",
+      "Bash(git -c 'user.name=Keshav Manjrekar' -c user.email=manjrekarkeshav14@gmail.com commit -q -m 'Bracket: order R32 by official venue sequence + align each round to feeders *)"
     ]
   }
 }
