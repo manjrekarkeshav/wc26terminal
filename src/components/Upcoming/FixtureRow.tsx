@@ -1,7 +1,7 @@
 import type { Match } from '../../lib/types';
 import type { WinProbMap } from '../../lib/winprob';
 import { rankFor } from '../../lib/rankings';
-import { ROUND_CLASS } from '../../lib/roundColors';
+import { ROUND_CLASS, ROUND_SHORT } from '../../lib/roundColors';
 import { UpcomingWinProb } from '../WinProbBar/WinProbBar';
 import { Countdown } from './Countdown';
 
@@ -31,6 +31,10 @@ export function FixtureRow({ match, pm }: { match: Match; pm: WinProbMap | null 
       </span>
       <UpcomingWinProb match={match} pm={pm} />
       <span className={`round-pill ${pillClass}`}>{pill}</span>
+      {/* compact round tag shown only on mobile (full pill is hidden there) */}
+      <span className={`round-pill up-tag ${pillClass}`}>
+        {match.round ? ROUND_SHORT[match.round] ?? match.round : pill}
+      </span>
       <span className="venue">{match.venue}</span>
     </div>
   );

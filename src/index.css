@@ -234,6 +234,7 @@ html.light .up-bar { background:#ddd5c0; }
   background:color-mix(in srgb, var(--bk) 12%, transparent);
 }
 .venue { font-size:.64rem; color:var(--dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.up-tag { display:none; } /* mobile-only compact round tag; shown in the phone media query */
 .show-all {
   margin:.6rem 0 0; background:#0e1116; color:var(--muted);
   border:1px solid var(--line2); border-radius:5px;
@@ -546,16 +547,18 @@ html.light .foot { background:#efe8d6; }
 
   /* Upcoming: compact 2-line fixture — [time · match] then [win bar] */
   .up-row {
-    grid-template-columns:auto 1fr;
+    grid-template-columns:auto 1fr auto;
     grid-template-areas:
-      "time match"
-      "wp   wp";
+      "time match tag"
+      "wp   wp    wp";
     align-items:center; column-gap:.55rem; row-gap:.28rem; padding:.5rem .85rem;
   }
   .up-time { grid-area:time; font-size:.72rem; color:var(--muted); }
   .up-match { grid-area:match; }
   .up-wp { grid-area:wp; justify-content:flex-start; }
   .up-cd, .round-pill, .venue { display:none; }
+  /* show the compact round tag in its own column */
+  .up-tag { display:inline-flex; grid-area:tag; align-self:center; }
   .day-head { padding:.7rem .85rem .2rem; }
 
   /* one card per row everywhere a min-width would otherwise overflow */
