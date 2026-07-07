@@ -28,12 +28,12 @@ const ELO_DIVISOR = 400;
 const DRAW_BASE = 0.28; // draw likelihood when teams are evenly matched
 
 /** Heuristic model from FIFA ranking points. Returns rounded percentages summing to 100. */
-export function modelWinProb(homeAbbr: string, awayAbbr: string): WinProb {
+export function modelWinProb(homeAbbr: string, awayAbbr: string, knockout = false): WinProb {
   const diff = pointsFor(homeAbbr) - pointsFor(awayAbbr) + HOME_ADVANTAGE;
   // Expected home win-ratio excluding draws (Elo expectation).
   const e = 1 / (1 + Math.pow(10, -diff / ELO_DIVISOR));
-  // Draw shrinks as the matchup becomes lopsided.
-  const draw = DRAW_BASE * (1 - 2 * Math.abs(e - 0.5));
+  // Knockout matches can't end in a draw (they go to ET/penalties) — no draw bucket.
+  const draw = knockout ? 0 : DRAW_BASE * (1 - 2 * Math.abs(e - 0.5));
   const home = e * (1 - draw);
   const away = (1 - e) * (1 - draw);
   return normalize(home, draw, away, 'MODEL');
@@ -60,14 +60,16 @@ export function isResolvedMatchup(match: Match): boolean {
 
 /** Resolve win-probability for a match, preferring Polymarket then falling back to the model. */
 export function getWinProb(match: Match, pm: WinProbMap | null): WinProb {
+  const knockout = match.round != null && match.round !== 'Group Stage';
   const key = fixtureKey(match.homeTeam.name, match.awayTeam.name);
   const market = pm?.[key];
   if (market) {
     const home = market[match.homeTeam.name.toLowerCase()];
     const away = market[match.awayTeam.name.toLowerCase()];
     if (home != null && away != null) {
-      return normalize(home, market.draw ?? 0, away, 'PM');
+      // Knockout markets resolve to a single winner — collapse any draw into home/away.
+      return normalize(home, knockout ? 0 : market.draw ?? 0, away, 'PM');
     }
   }
-  return modelWinProb(match.homeTeam.abbreviation, match.awayTeam.abbreviation);
+  return modelWinProb(match.homeTeam.abbreviation, match.awayTeam.abbreviation, knockout);
 }
