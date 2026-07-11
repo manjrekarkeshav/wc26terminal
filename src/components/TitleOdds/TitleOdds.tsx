@@ -14,6 +14,7 @@ export function TitleOdds({ teams }: { teams: TitleOddsRow[] }) {
   return (
     <section className="title-odds-sec">
       <div className="section-head" id="title-odds">
+        <span className="pulse-dot" aria-hidden="true" />
         <h2>Title odds</h2>
         <span className="sub">live · Polymarket</span>
       </div>

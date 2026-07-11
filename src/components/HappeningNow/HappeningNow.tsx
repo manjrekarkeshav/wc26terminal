@@ -18,7 +18,9 @@ export function HappeningNow({ matches, pm }: { matches: Match[]; pm: WinProbMap
   return (
     <>
       <div className="section-head" id="live">
-        <span className="pulse-dot" aria-hidden="true" />
+        {matches.some((m) => m.status === 'in') && (
+          <span className="pulse-dot" aria-hidden="true" />
+        )}
         <h2>Happening now</h2>
         <span className="sub">live · auto-refresh 10s</span>
       </div>

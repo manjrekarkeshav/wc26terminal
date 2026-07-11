@@ -27,24 +27,24 @@
 }
 
 html.light {
-  --bg: #f6f1e4;
-  --panel: #fffdf6;
-  --panel2: #efe8d6;
-  --line: rgba(120, 92, 18, 0.13);
-  --line2: rgba(120, 92, 18, 0.22);
-  --text: #211c10;
-  --muted: #6b6149;
-  --dim: #9a9078;
-  --amber: #9a7414;
-  --amber-dim: #c7a043;
-  --green: #1f9d57;
-  --green-dim: #7fc79b;
-  --cyan: #8a7320;
-  --yellow: #8a6e1e;
-  --blue: #2563eb;
-  --neon: #9a7d24;
-  --elim: #c0392b;
-  --draw: #bcae90;
+  --bg: #f0ead9;
+  --panel: #fffefb;
+  --panel2: #e7dfca;
+  --line: rgba(120, 92, 18, 0.20);
+  --line2: rgba(120, 92, 18, 0.32);
+  --text: #1c1809;
+  --muted: #5a5137;
+  --dim: #837a5f;
+  --amber: #7f5e0d;
+  --amber-dim: #b28d33;
+  --green: #157a42;
+  --green-dim: #6cbb8c;
+  --cyan: #755f18;
+  --yellow: #755c16;
+  --blue: #1d55d6;
+  --neon: #7f6516;
+  --elim: #b3271b;
+  --draw: #b0a284;
   --wp-home: #2563eb; /* blue (darker for light bg) */
   --wp-away: #1f9d57; /* green (darker for light bg) */
 }
