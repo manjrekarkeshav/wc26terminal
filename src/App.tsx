@@ -3,6 +3,7 @@ import { FilterProvider } from './context/FilterContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { usePolling } from './hooks/usePolling';
 import { useWinProb } from './hooks/useWinProb';
+import { useTitleOdds } from './hooks/useTitleOdds';
 import { computeStandings } from './lib/standings';
 import { computeTopScorers } from './lib/scorers';
 import { computeAllTimeScorers } from './lib/allTimeScorers';
@@ -16,12 +17,14 @@ import { ScorersAndAssists } from './components/ScorersAndAssists/ScorersAndAssi
 import { GroupStandings } from './components/GroupStandings/GroupStandings';
 import { ThirdPlaceRace } from './components/ThirdPlaceRace/ThirdPlaceRace';
 import { Bracket } from './components/Bracket/Bracket';
+import { TitleOdds } from './components/TitleOdds/TitleOdds';
 import { Credit } from './components/Credit/Credit';
 import { StaleBanner } from './components/StaleBanner';
 
 export default function App() {
   const { data, error } = usePolling();
   const winProb = useWinProb();
+  const titleOdds = useTitleOdds();
 
   const matches = data?.matches ?? [];
   const isLive = matches.some((m) => m.status === 'in');
@@ -40,7 +43,12 @@ export default function App() {
         {isStale && <StaleBanner />}
 
         <main>
-          <HappeningNow matches={matches} pm={winProb} />
+          <div className={`top-split${titleOdds.length > 0 ? ' has-side' : ''}`}>
+            <div className="top-main">
+              <HappeningNow matches={matches} pm={winProb} />
+            </div>
+            <TitleOdds teams={titleOdds} />
+          </div>
           <FilterBar matches={matches} />
           <Upcoming matches={matches} pm={winProb} />
           <RecentResults matches={matches} />
@@ -54,7 +62,8 @@ export default function App() {
         <footer className="foot">
           <span>
             <span className="k">DATA</span> ESPN ·{' '}
-            <span className="k">WIN%</span> POLYMARKET → DK → MODEL ·{' '}
+            <span className="k">TITLE ODDS</span> POLYMARKET ·{' '}
+            <span className="k">WIN%</span> MODEL ·{' '}
             <span className="k">REFRESH</span> 10s ·{' '}
             <span className="k">TZ</span> LOCAL
           </span>

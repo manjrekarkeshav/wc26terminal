@@ -517,6 +517,42 @@ html.light .match-stats .ms-bar { background:#ddd5c0; }
 /* keep the 3rd-place sub-header its own muted gold, not the Final color */
 .bk-col .bk3rd .bk-head { color:var(--amber-dim); }
 
+/* ─── Top split: Happening Now + Title Odds sidebar ──────────── */
+.top-split.has-side { display:grid; grid-template-columns:minmax(0,1fr) 320px; align-items:start; }
+.top-split .top-main { min-width:0; }
+/* the live grid inside the split shouldn't force 2 wide columns in a narrow area */
+.top-split.has-side .live-grid { grid-template-columns:1fr; }
+
+/* ─── Title Odds ─────────────────────────────────────────────── */
+.to-wrap { padding:0 16px; }
+.to-panel { padding:.2rem 0; }
+.to-row {
+  display:grid; grid-template-columns:1.5rem 1fr; align-items:center; gap:.55rem;
+  padding:.5rem .8rem; border-bottom:1px solid var(--line);
+}
+.to-row:last-child { border-bottom:0; }
+.to-rk { font-family:var(--mono); color:var(--dim); font-size:.74rem; text-align:right; }
+.to-body { min-width:0; }
+.to-line { display:flex; align-items:center; gap:.4rem; font-size:.84rem; }
+.to-line .to-name { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.to-line sup { color:var(--muted); font-size:.6rem; }
+.to-line .to-pct {
+  margin-left:auto; padding-left:.5rem; font-family:var(--mono);
+  font-variant-numeric:tabular-nums; color:var(--text); font-weight:600;
+}
+.to-bar { display:block; margin-top:.32rem; height:6px; border-radius:3px; background:#26292c; overflow:hidden; }
+html.light .to-bar { background:#ddd5c0; }
+.to-bar i {
+  display:block; height:100%; border-radius:3px;
+  background:linear-gradient(90deg, var(--amber-dim), var(--amber));
+}
+.to-note { color:var(--dim); font-size:.7rem; margin:.55rem .2rem 0; line-height:1.5; }
+
+@media (max-width:980px) {
+  /* stack: Title Odds becomes a section directly below Happening Now */
+  .top-split.has-side { display:block; }
+}
+
 /* ─── Empty & Credit ─────────────────────────────────────────── */
 .empty-card {
   border:1px dashed var(--line2); border-radius:5px; padding:1.5rem;
