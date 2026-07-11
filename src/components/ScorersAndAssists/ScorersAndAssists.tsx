@@ -4,9 +4,27 @@ import type { AllTimeRow } from '../../lib/allTimeScorers';
 import { ROUND_CLASS, ROUND_SHORT } from '../../lib/roundColors';
 import { Tooltip } from '../Tooltip/Tooltip';
 
+function ActiveToggle({ on, onToggle }: { on: boolean; onToggle: () => void }) {
+  return (
+    <button
+      type="button"
+      className={`sc-toggle${on ? ' on' : ''}`}
+      onClick={onToggle}
+      role="switch"
+      aria-checked={on}
+      title="Show only players whose nation is still in the tournament"
+    >
+      <span className="sc-toggle-label">Active only</span>
+      <span className="sc-switch" aria-hidden="true"><span className="knob" /></span>
+    </button>
+  );
+}
+
 function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
   const [expanded, setExpanded] = useState(false);
-  const visible = expanded ? rows : rows.slice(0, 10);
+  const [activeOnly, setActiveOnly] = useState(false);
+  const filtered = activeOnly ? rows.filter((r) => r.active) : rows;
+  const visible = expanded ? filtered : filtered.slice(0, 10);
 
   return (
     <div className="panel">
@@ -15,7 +33,10 @@ function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
           <span className="tick">◎</span>
           <span className="eyebrow">All-time top scorers</span>
         </span>
-        <span className="count c-cyan">WC GOALS</span>
+        <span className="phead-r">
+          <ActiveToggle on={activeOnly} onToggle={() => setActiveOnly((v) => !v)} />
+          <span className="count c-cyan">WC GOALS</span>
+        </span>
       </div>
 
       {visible.map((row) => {
@@ -50,9 +71,9 @@ function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
         );
       })}
 
-      {rows.length > 10 && (
+      {filtered.length > 10 && (
         <button className="show-more" type="button" onClick={() => setExpanded((e) => !e)}>
-          {expanded ? 'Show top 10' : `Show top ${Math.min(rows.length, 20)}`}
+          {expanded ? 'Show top 10' : `Show top ${Math.min(filtered.length, 20)}`}
         </button>
       )}
     </div>
@@ -73,7 +94,9 @@ function LeaderboardPanel({
   eliminated: Set<string>;
 }) {
   const [expanded, setExpanded] = useState(false);
-  const visible = expanded ? rows : rows.slice(0, 10);
+  const [activeOnly, setActiveOnly] = useState(false);
+  const filtered = activeOnly ? rows.filter((r) => !eliminated.has(r.teamAbbr)) : rows;
+  const visible = expanded ? filtered : filtered.slice(0, 10);
 
   return (
     <div className={`panel${expanded ? ' expanded' : ''}`}>
@@ -82,7 +105,10 @@ function LeaderboardPanel({
           <span className="tick">◎</span>
           <span className="eyebrow">{title}</span>
         </span>
-        <span className={`count ${badgeClass}`}>{badge}</span>
+        <span className="phead-r">
+          <ActiveToggle on={activeOnly} onToggle={() => setActiveOnly((v) => !v)} />
+          <span className={`count ${badgeClass}`}>{badge}</span>
+        </span>
       </div>
 
       {visible.map((row) => {
@@ -126,9 +152,9 @@ function LeaderboardPanel({
         );
       })}
 
-      {rows.length > 10 && (
+      {filtered.length > 10 && (
         <button className="show-more" type="button" onClick={() => setExpanded((e) => !e)}>
-          {expanded ? 'Show top 10' : `Show top ${Math.min(rows.length, 20)}`}
+          {expanded ? 'Show top 10' : `Show top ${Math.min(filtered.length, 20)}`}
         </button>
       )}
     </div>

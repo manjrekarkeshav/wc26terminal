@@ -112,6 +112,29 @@ html.light .phead { background:#efe8d6; }
 .phead .tick { color:var(--amber); font-size:.92rem; }
 .phead .eyebrow { font-size:.74rem; color:#cfd3d6; font-weight:600; letter-spacing:.16em; }
 html.light .phead .eyebrow { color:#211c10; }
+.phead-r { display:flex; align-items:center; gap:.55rem; }
+.sc-toggle {
+  display:inline-flex; align-items:center; gap:.4rem; cursor:pointer;
+  background:transparent; border:0; padding:0; font-family:inherit;
+}
+.sc-toggle-label {
+  font-size:.58rem; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap;
+  color:var(--muted);
+}
+.sc-toggle:hover .sc-toggle-label { color:var(--text); }
+.sc-toggle.on .sc-toggle-label { color:var(--neon); }
+/* sliding switch */
+.sc-switch {
+  position:relative; width:26px; height:14px; border-radius:8px; flex:none;
+  background:var(--line); border:1px solid var(--line2); transition:background .16s ease;
+}
+.sc-switch .knob {
+  position:absolute; top:1px; left:1px; width:10px; height:10px; border-radius:50%;
+  background:var(--muted); transition:transform .16s ease, background .16s ease;
+}
+.sc-toggle.on .sc-switch { background:rgba(70,240,138,.32); border-color:rgba(70,240,138,.5); }
+.sc-toggle.on .sc-switch .knob { transform:translateX(12px); background:var(--neon); }
+.sc-toggle:focus-visible { outline:2px solid var(--amber); outline-offset:2px; border-radius:4px; }
 .count {
   font-size:.62rem; color:var(--muted); letter-spacing:.1em;
   border:1px solid var(--line); border-radius:3px; padding:.18rem .4rem;
