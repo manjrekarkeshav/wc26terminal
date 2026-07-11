@@ -10,21 +10,22 @@ A live, information-dense **2026 FIFA World Cup dashboard** with a Bloomberg-ter
 
 ## Features
 
-- **Happening Now** — live match cards with scores, match clock, scorers, and win-probability bars. Fixtures appear 30 minutes before kickoff (and drop out of Upcoming so they never show twice), the empty state counts down to the next kickoff, and a red **Delayed** badge surfaces postponed matches.
+- **Happening Now** — live match cards with scores, match clock, scorers, and win-probability bars. Fixtures appear 30 minutes before kickoff (and drop out of Upcoming so they never show twice), the empty state counts down to the next kickoff, and a red **Delayed** badge surfaces postponed matches. A green live dot appears only while a match is actually in progress.
+- **Title Odds** — live outright "who wins the tournament" probabilities from **Polymarket's** World Cup Winner market, renormalized across teams still alive. Sits beside Happening Now on desktop and stacks below it on mobile.
 - **Upcoming** — day-grouped fixtures with local kickoff times, live countdowns, colour-coded round tags, and win-probability bars showing both nations.
 - **Recent Results** — final-score cards with:
   - goal scorers on hover, and **yellow + red card** detail (who and when);
   - a **Penalties** tag and shootout score for matches decided on penalties;
   - a colour-coded **round tag** (Group / R32 / R16 / QF …) on every card;
   - a **⚡ Shocker** highlight (whole card tinted red) when a top-10 side is held or beaten by a team ranked 20+ places below.
-- **Golden Boot** — top scorers computed live from match events. Hover a player for a per-goal breakdown (minute, opponent, scoreline, and the round it came in), plus a 🟢 / ❌ marker showing whether their nation is still alive in the tournament.
-- **All-time top scorers** — career World Cup goals (bundled pre-2026 totals + live WC26 goals), shown beside the Golden Boot. Marks the all-time leader (⭐️), active vs retired players (🟢 / 🔴), and anyone climbing the ranking during WC26 (🔼); hover for the pre-2026 / WC26 split.
+- **Golden Boot** — top scorers computed live from match events. Hover a player for a per-goal breakdown (minute, opponent, scoreline, and the round it came in), plus a 🟢 / ❌ marker showing whether their nation is still alive in the tournament. An **Active only** toggle filters to players whose nation is still in it.
+- **All-time top scorers** — career World Cup goals (bundled pre-2026 totals + live WC26 goals), shown beside the Golden Boot. Marks the all-time leader (⭐️), active vs retired players (🟢 / 🔴), and anyone climbing the ranking during WC26 (🔼); hover for the pre-2026 / WC26 split. Its own **Active only** toggle hides retired players.
 - **Knockout Bracket** — "as it stands," driven by real knockout fixtures: winners advance automatically (penalties included), with live indicators on in-progress matches, FIFA rank superscripts, penalty scores, and **Penalties / Shocker** tags.
 - **Group Standings** — all 12 groups computed client-side from results (points, GD, qualification / elimination) with FIFA rank superscripts and average-rank per group.
 - **3rd-Place Race** — the 8-of-12 best third-place teams ranked by FIFA tiebreakers.
-- **Win probabilities** — Polymarket markets with a FIFA-ranking model fallback (source-tagged).
-- **Filters** (team / location), **dark + light themes**, and a graceful **offline fallback** so it never looks broken when live data is down.
-- **Fully responsive** — reworked for mobile, where the hover panels (goal scorers + match stats on Recent Results and the Bracket) open on **tap** and stay within the viewport.
+- **Per-match win probabilities** — a FIFA-ranking Elo model on Upcoming rows and live cards, with **no draw in knockouts** (extra time / penalties decide a winner). Polymarket match markets attach automatically when they exist (matched by FIFA 3-letter code, not fragile name strings); today they don't publish 3-way moneylines for these fixtures, so the bars are model-based and honestly labelled.
+- **Filters** (team / location), **dark + light themes** (light theme tuned for readable contrast), and a graceful **offline fallback** so it never looks broken when live data is down.
+- **Fully responsive** — a sticky top bar and wrapped nav on mobile, a footer clock that shows the viewer's own time zone, and hover panels (goal scorers + match stats on Recent Results and the Bracket) that open on **tap** and stay within the viewport.
 
 ## How it works
 
@@ -33,9 +34,9 @@ ESPN public API ─▶ Cloudflare Worker (proxy + ~10s edge cache) ─▶ React 
                                                                   (polls 10s live / 60s idle)
 ```
 
-- A single **Cloudflare Worker** ([`worker/index.ts`](worker/index.ts)) serves the built SPA and proxies two cached API routes: `/api/data` (ESPN scoreboard) and `/api/winprob` (Polymarket).
+- A single **Cloudflare Worker** ([`worker/index.ts`](worker/index.ts)) serves the built SPA and proxies three cached API routes: `/api/data` (ESPN scoreboard), `/api/titleodds` (Polymarket World Cup Winner), and `/api/winprob` (Polymarket match markets).
 - **Standings and the bracket are computed in the browser** from match results — ESPN's standings endpoint is unreliable for group stages.
-- All ESPN normalization lives in one seam ([`src/lib/espn.ts`](src/lib/espn.ts)) so the rest of the app is source-agnostic.
+- All ESPN normalization lives in one seam ([`src/lib/espn.ts`](src/lib/espn.ts)) so the rest of the app is source-agnostic. Polymarket parsing is shared between the Worker and a dev middleware ([`src/lib/titleOdds.ts`](src/lib/titleOdds.ts), [`src/lib/teamCodes.ts`](src/lib/teamCodes.ts)) so the local preview renders the same data as production.
 - A bundled [`public/schedule.json`](public/schedule.json) is the fallback when live data is unavailable.
 
 ## Tech stack
