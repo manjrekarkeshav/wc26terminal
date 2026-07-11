@@ -35,7 +35,7 @@ const FLAG_MAP: Record<string, string> = {
   ALG: '🇩🇿', AUT: '🇦🇹', IRN: '🇮🇷', KSA: '🇸🇦',
 };
 
-function flagFor(abbr: string): string {
+export function flagFor(abbr: string): string {
   return FLAG_MAP[abbr.toUpperCase()] ?? '🏳️';
 }
 

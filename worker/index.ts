@@ -9,6 +9,9 @@
  * (Replaces the Pages-style functions/ directory, since this account deploys as a Worker.)
  */
 
+import { codeFor } from '../src/lib/teamCodes';
+import { parseTitleOdds } from '../src/lib/titleOdds';
+
 interface Env {
   ASSETS: { fetch: (request: Request) => Promise<Response> };
 }
@@ -18,12 +21,14 @@ const ESPN_URL =
 const GAMMA = 'https://gamma-api.polymarket.com';
 const CACHE_TTL = 10; // seconds for ESPN
 const WINPROB_TTL = 60; // seconds for Polymarket
+const TITLEODDS_TTL = 300; // seconds for Polymarket title odds (move slowly)
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
     if (url.pathname === '/api/data') return handleData();
     if (url.pathname === '/api/winprob') return handleWinprob();
+    if (url.pathname === '/api/titleodds') return handleTitleOdds();
     return env.ASSETS.fetch(request);
   },
 };
@@ -115,16 +120,41 @@ function parseMarket(m: { outcomes?: string; outcomePrices?: string }) {
   const drawIdx = outcomes.findIndex((o) => DRAW_RE.test(o.trim()));
   if (drawIdx === -1) return null;
   const [aIdx, bIdx] = [0, 1, 2].filter((i) => i !== drawIdx);
-  const a = outcomes[aIdx].trim();
-  const b = outcomes[bIdx].trim();
+  // Resolve both sides to FIFA codes; skip the market unless BOTH map confidently.
+  const aCode = codeFor(outcomes[aIdx]);
+  const bCode = codeFor(outcomes[bIdx]);
+  if (!aCode || !bCode) return null;
   const total = prices.reduce((s, p) => s + p, 0) || 1;
-  const key = [a.toLowerCase(), b.toLowerCase()].sort().join('|');
+  const key = [aCode, bCode].sort().join('|');
   return {
     key,
     probs: {
-      [a.toLowerCase()]: (prices[aIdx] / total) * 100,
-      [b.toLowerCase()]: (prices[bIdx] / total) * 100,
+      [aCode]: (prices[aIdx] / total) * 100,
+      [bCode]: (prices[bIdx] / total) * 100,
       draw: (prices[drawIdx] / total) * 100,
     },
   };
+}
+
+// ─── /api/titleodds : Polymarket "World Cup Winner" outright odds ───────────────
+async function handleTitleOdds(): Promise<Response> {
+  const cache = (caches as unknown as { default: Cache }).default;
+  const cacheKey = new Request(`${GAMMA}/__titleodds_cache`);
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached.clone();
+
+  let teams: ReturnType<typeof parseTitleOdds> = [];
+  try {
+    const res = await fetch(`${GAMMA}/events?slug=world-cup-winner`, {
+      headers: { Accept: 'application/json' },
+      signal: AbortSignal.timeout(8_000),
+    });
+    if (res.ok) teams = parseTitleOdds(await res.json());
+  } catch (err) {
+    console.error('Polymarket title-odds fetch error:', err);
+  }
+
+  const response = json({ teams, fetchedAt: Date.now() }, TITLEODDS_TTL);
+  await cache.put(cacheKey, response.clone());
+  return response;
 }

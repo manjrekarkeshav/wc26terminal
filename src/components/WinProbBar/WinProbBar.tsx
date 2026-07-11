@@ -4,7 +4,7 @@ import { getWinProb, isResolvedMatchup } from '../../lib/winprob';
 
 /**
  * Compact win-probability bar for an Upcoming row: home vs away (draw folded out),
- * showing BOTH nations. Source tag only shown when it's a real market (PM/DK).
+ * showing BOTH nations. Source tag only shown when it's a real market (PM).
  * Hidden entirely for unresolved bracket fixtures (e.g. "Round of 32 3 Winner").
  */
 export function UpcomingWinProb({ match, pm }: { match: Match; pm: WinProbMap | null }) {

@@ -3,6 +3,7 @@ import { useTheme } from '../../context/ThemeContext';
 
 const SECTIONS = [
   { id: 'live', label: 'Live' },
+  { id: 'title-odds', label: 'Title Odds' },
   { id: 'upcoming', label: 'Upcoming' },
   { id: 'results', label: 'Recent Results' },
   { id: 'scorers', label: 'Golden Boot' },
