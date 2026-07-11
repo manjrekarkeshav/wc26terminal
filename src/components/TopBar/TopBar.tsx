@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 
 const SECTIONS = [
@@ -14,16 +14,33 @@ const SECTIONS = [
 export function TopBar({ isLive }: { isLive: boolean }) {
   const { theme, setTheme } = useTheme();
   const [activeId, setActiveId] = useState('live');
+  // Mirror of activeId readable synchronously inside the scroll handler.
+  const activeRef = useRef(activeId);
+  activeRef.current = activeId;
+
+  const select = (id: string) => {
+    activeRef.current = id;
+    setActiveId(id);
+  };
 
   useEffect(() => {
     const handler = () => {
       const y = window.scrollY + 140;
-      let idx = 0;
-      SECTIONS.forEach((s, i) => {
+      // The winning band is the greatest offsetTop still above the fold line.
+      let best = -Infinity;
+      SECTIONS.forEach((s) => {
         const el = document.getElementById(s.id);
-        if (el && el.offsetTop <= y) idx = i;
+        if (el && el.offsetTop <= y) best = Math.max(best, el.offsetTop);
       });
-      setActiveId(SECTIONS[idx].id);
+      // Sections sharing that band (e.g. Live + Title Odds sit side by side at the top).
+      const tied = SECTIONS.filter((s) => {
+        const el = document.getElementById(s.id);
+        return el && el.offsetTop === best;
+      });
+      if (tied.length === 0) return;
+      // Keep the user's current pick if it's in the band; otherwise take the earliest.
+      const keep = tied.find((s) => s.id === activeRef.current) ?? tied[0];
+      setActiveId(keep.id);
     };
     window.addEventListener('scroll', handler, { passive: true });
     handler();
@@ -41,6 +58,7 @@ export function TopBar({ isLive }: { isLive: boolean }) {
             key={s.id}
             href={`#${s.id}`}
             className={activeId === s.id ? 'active' : ''}
+            onClick={() => select(s.id)}
           >
             {s.label}
           </a>
