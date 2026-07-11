@@ -34,6 +34,8 @@ ESPN public API ─▶ Cloudflare Worker (proxy + ~10s edge cache) ─▶ React 
                                                                   (polls 10s live / 60s idle)
 ```
 
+![WC26 Terminal — build & runtime architecture](docs/architecture.png)
+
 - A single **Cloudflare Worker** ([`worker/index.ts`](worker/index.ts)) serves the built SPA and proxies three cached API routes: `/api/data` (ESPN scoreboard), `/api/titleodds` (Polymarket World Cup Winner), and `/api/winprob` (Polymarket match markets).
 - **Standings and the bracket are computed in the browser** from match results — ESPN's standings endpoint is unreliable for group stages.
 - All ESPN normalization lives in one seam ([`src/lib/espn.ts`](src/lib/espn.ts)) so the rest of the app is source-agnostic. Polymarket parsing is shared between the Worker and a dev middleware ([`src/lib/titleOdds.ts`](src/lib/titleOdds.ts), [`src/lib/teamCodes.ts`](src/lib/teamCodes.ts)) so the local preview renders the same data as production.
