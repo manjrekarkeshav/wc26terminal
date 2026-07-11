@@ -585,18 +585,18 @@ html.light .foot { background:#efe8d6; }
 
 /* Tablet / large phone: keep the in-page nav usable */
 @media (max-width:760px) {
-  html, body { max-width:100%; overflow-x:hidden; }
+  /* NB: don't set overflow-x on html/body — it turns them into a scroll container
+     and breaks the sticky top bar. Horizontal overflow is contained per-section
+     instead (e.g. .bracket-wrap scrolls itself). */
+  html, body { max-width:100%; }
   .topbar { flex-wrap:wrap; gap:.45rem .8rem; padding:.5rem .8rem; }
   .brand { font-size:.95rem; }
   .status { margin-left:auto; gap:.7rem; }
-  /* nav becomes a full-width horizontal scroll strip under the brand */
+  /* nav wraps under the brand and shows all links statically (like desktop) */
   .nav {
-    order:3; width:100%; flex-wrap:nowrap; overflow-x:auto;
-    gap:.15rem; padding-bottom:.1rem; -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
+    order:3; width:100%; flex-wrap:wrap; gap:.2rem .15rem; padding-bottom:.1rem;
   }
-  .nav::-webkit-scrollbar { display:none; }
-  .nav a { white-space:nowrap; flex:none; }
+  .nav a { white-space:nowrap; }
 }
 
 /* Phones */

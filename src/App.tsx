@@ -30,6 +30,19 @@ export default function App() {
   const isLive = matches.some((m) => m.status === 'in');
   const isStale = data?.isStale || error;
 
+  // Short name of the viewer's own time zone (e.g. "PDT", "GMT+5:30"), for the footer.
+  const tz = (() => {
+    try {
+      return (
+        new Intl.DateTimeFormat(undefined, { timeZoneName: 'short' })
+          .formatToParts(new Date())
+          .find((p) => p.type === 'timeZoneName')?.value ?? 'LOCAL'
+      );
+    } catch {
+      return 'LOCAL';
+    }
+  })();
+
   const standings = useMemo(() => computeStandings(matches), [matches]);
   const topScorers = useMemo(() => computeTopScorers(matches, 20), [matches]);
   const allTimeScorers = useMemo(() => computeAllTimeScorers(matches), [matches]);
@@ -65,7 +78,7 @@ export default function App() {
             <span className="k">TITLE ODDS</span> POLYMARKET ·{' '}
             <span className="k">WIN%</span> MODEL ·{' '}
             <span className="k">REFRESH</span> 10s ·{' '}
-            <span className="k">TZ</span> LOCAL
+            <span className="k">TZ</span> {tz}
           </span>
           <span>WC26TERMINAL</span>
         </footer>
