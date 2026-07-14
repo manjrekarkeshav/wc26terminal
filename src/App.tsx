@@ -48,6 +48,15 @@ export default function App() {
   const allTimeScorers = useMemo(() => computeAllTimeScorers(matches), [matches]);
   const eliminated = useMemo(() => computeEliminatedTeams(matches, standings), [matches, standings]);
 
+  // Polymarket's live title market runs on the real-world timeline, so it can still
+  // price teams our tournament has already knocked out. Drop eliminated teams and
+  // renormalize across those actually still alive in this bracket.
+  const liveTitleOdds = useMemo(() => {
+    const alive = titleOdds.filter((t) => !eliminated.has(t.code));
+    const total = alive.reduce((s, t) => s + t.prob, 0) || 1;
+    return alive.map((t) => ({ ...t, prob: (t.prob / total) * 100 }));
+  }, [titleOdds, eliminated]);
+
   return (
     <ThemeProvider>
       <FilterProvider>
@@ -56,11 +65,11 @@ export default function App() {
         {isStale && <StaleBanner />}
 
         <main>
-          <div className={`top-split${titleOdds.length > 0 ? ' has-side' : ''}`}>
+          <div className={`top-split${liveTitleOdds.length > 0 ? ' has-side' : ''}`}>
             <div className="top-main">
               <HappeningNow matches={matches} pm={winProb} />
             </div>
-            <TitleOdds teams={titleOdds} />
+            <TitleOdds teams={liveTitleOdds} />
           </div>
           <FilterBar matches={matches} />
           <Upcoming matches={matches} pm={winProb} />
