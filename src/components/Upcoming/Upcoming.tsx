@@ -3,6 +3,7 @@ import type { Match } from '../../lib/types';
 import type { WinProbMap } from '../../lib/winprob';
 import { useFilter } from '../../context/FilterContext';
 import { isHappeningNow } from '../../lib/live';
+import { resolveKnockoutSlots } from '../../lib/knockout';
 import { FixtureRow } from './FixtureRow';
 
 function matchesFilter(match: Match, team: string, location: string): boolean {
@@ -29,9 +30,11 @@ export function Upcoming({ matches, pm }: { matches: Match[]; pm: WinProbMap | n
   const [showAll, setShowAll] = useState(false);
 
   // Matches already surfaced in "Happening now" (live / delayed / within 30 min) are
-  // excluded so a fixture never shows in both sections.
+  // excluded so a fixture never shows in both sections. Placeholder knockout slots
+  // (e.g. "Semifinal 1 Loser") are resolved to the real team once the feeder is decided.
   const upcoming = matches
     .filter((m) => m.status === 'pre' && !isHappeningNow(m))
+    .map((m) => resolveKnockoutSlots(m, matches))
     .filter((m) => matchesFilter(m, team, location))
     .sort((a, b) => new Date(a.kickoffUtc).getTime() - new Date(b.kickoffUtc).getTime());
 

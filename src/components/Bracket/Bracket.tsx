@@ -123,8 +123,8 @@ export function Bracket({ matches, standings }: { matches: Match[]; standings: G
                       <span>{thirdPlace.matches[0].venue}</span>
                       <span>{thirdPlace.matches[0].date}</span>
                     </div>
-                    <div className="phl">{thirdPlace.matches[0].home.label}</div>
-                    <div className="phl">{thirdPlace.matches[0].away.label}</div>
+                    <TeamLine slot={thirdPlace.matches[0].home} />
+                    <TeamLine slot={thirdPlace.matches[0].away} />
                   </div>
                 </div>
               )}

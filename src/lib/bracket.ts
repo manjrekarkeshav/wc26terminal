@@ -13,6 +13,7 @@
 import type { GroupStanding, GroupTeamRow, Match, TeamStats, Goal } from './types';
 import { rankFor } from './rankings';
 import { getUpset } from './upsets';
+import { resolveKnockoutSlots } from './knockout';
 
 export interface BracketTeam {
   flag: string;
@@ -123,7 +124,9 @@ function orderByFeeders(prev: BracketMatchView[], current: BracketMatchView[]): 
 }
 
 function buildFromEspn(matches: Match[]): BracketRoundView[] {
-  const knockout = matches.filter((m) => m.round != null);
+  // Resolve placeholder slots (e.g. "Semifinal 1 Loser") to the real team once the
+  // feeder is decided, so the Final and 3rd-place cards show flags, not raw labels.
+  const knockout = matches.filter((m) => m.round != null).map((m) => resolveKnockoutSlots(m, matches));
 
   const toView = (m: Match, i: number): BracketMatchView => {
     const hs = m.homeScore ?? 0;
@@ -175,16 +178,10 @@ function buildFromEspn(matches: Match[]): BracketRoundView[] {
     { label: 'Final', spread: true, matches: fin },
   ];
 
-  // 3rd-place match (rendered under Final by the component).
-  const third = knockout
-    .filter((m) => m.round === '3rd Place')
-    .map((m, i): BracketMatchView => ({
-      matchNo: i + 1,
-      venue: m.venue,
-      date: fmtDate(m.kickoffUtc),
-      home: { label: m.homeTeam.name },
-      away: { label: m.awayTeam.name },
-    }));
+  // 3rd-place match (rendered under Final by the component). Built via toView so a
+  // resolved side (e.g. France) renders as a team with flag, and an undecided side
+  // stays a placeholder label.
+  const third = build('3rd Place');
   if (third.length) rounds.push({ label: '3rd Place', matches: third });
 
   return rounds;
