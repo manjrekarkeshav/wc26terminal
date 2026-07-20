@@ -4,6 +4,8 @@ import type { DataResponse } from '../lib/types';
 
 const LIVE_INTERVAL = 10_000;
 const IDLE_INTERVAL = 60_000;
+// Every fixture played — nothing left to fetch, so back right off.
+const COMPLETE_INTERVAL = 1_800_000; // 30 min
 const FALLBACK_URL = '/schedule.json';
 
 export function usePolling() {
@@ -20,9 +22,13 @@ export function usePolling() {
       if (raw.isStale) normalized.isStale = true;
       setData(normalized);
       setError(false);
-      // Schedule next poll based on whether any match is live
+      // Schedule next poll: fast while live, slow when idle, barely at all once the
+      // whole tournament is played out.
       const hasLive = normalized.matches.some((m) => m.status === 'in');
-      timerRef.current = setTimeout(fetchData, hasLive ? LIVE_INTERVAL : IDLE_INTERVAL);
+      const allDone =
+        normalized.matches.length > 0 && normalized.matches.every((m) => m.status === 'post');
+      const next = hasLive ? LIVE_INTERVAL : allDone ? COMPLETE_INTERVAL : IDLE_INTERVAL;
+      timerRef.current = setTimeout(fetchData, next);
     } catch (e) {
       console.error('Poll error:', e);
       setError(true);

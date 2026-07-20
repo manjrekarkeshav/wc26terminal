@@ -8,16 +8,19 @@ export function Tooltip({
   children,
   lines,
   align = 'left',
+  className,
 }: {
   children: ReactNode;
   lines: ReactNode[];
   align?: 'left' | 'right';
+  /** Extra class on the popup itself, e.g. to allow wrapping. */
+  className?: string;
 }) {
   if (lines.length === 0) return <>{children}</>;
   return (
     <span className="tip-wrap">
       {children}
-      <span className={`tip tip-${align}`} role="tooltip">
+      <span className={`tip tip-${align}${className ? ` ${className}` : ''}`} role="tooltip">
         {lines.map((line, i) => (
           <span className="tip-line" key={i}>
             {line}

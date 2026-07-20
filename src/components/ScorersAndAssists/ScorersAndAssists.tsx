@@ -80,22 +80,34 @@ function AllTimePanel({ rows }: { rows: AllTimeRow[] }) {
   );
 }
 
+/** "Quarterfinals" → "QF"; "Champion" keeps its own label. */
+function exitLabel(round: string | undefined): string {
+  if (!round) return '';
+  if (round === 'Champion') return 'CHAMPION';
+  return ROUND_SHORT[round] ?? round;
+}
+
 function LeaderboardPanel({
   title,
   badge,
   badgeClass,
   rows,
   eliminated,
+  archive = false,
+  exitRounds,
 }: {
   title: string;
   badge: string;
   badgeClass: string;
   rows: ScorerRow[];
   eliminated: Set<string>;
+  archive?: boolean;
+  exitRounds?: Map<string, string>;
 }) {
   const [expanded, setExpanded] = useState(false);
   const [activeOnly, setActiveOnly] = useState(false);
-  const filtered = activeOnly ? rows.filter((r) => !eliminated.has(r.teamAbbr)) : rows;
+  // "Still alive" is meaningless once the tournament is over.
+  const filtered = !archive && activeOnly ? rows.filter((r) => !eliminated.has(r.teamAbbr)) : rows;
   const visible = expanded ? filtered : filtered.slice(0, 10);
 
   return (
@@ -106,13 +118,15 @@ function LeaderboardPanel({
           <span className="eyebrow">{title}</span>
         </span>
         <span className="phead-r">
-          <ActiveToggle on={activeOnly} onToggle={() => setActiveOnly((v) => !v)} />
+          {!archive && <ActiveToggle on={activeOnly} onToggle={() => setActiveOnly((v) => !v)} />}
           <span className={`count ${badgeClass}`}>{badge}</span>
         </span>
       </div>
 
       {visible.map((row) => {
         const isOut = eliminated.has(row.teamAbbr);
+        const exit = exitRounds?.get(row.teamAbbr);
+        const isWinner = archive && row.rank === 1;
         const goalLines = row.goals.map((g) => (
           <>
             <span className={`goal-round ${ROUND_CLASS[g.round] ?? ''}`}>
@@ -121,11 +135,19 @@ function LeaderboardPanel({
             ⚽ {g.minute} vs {g.opponent} · <span className="ab">{g.result}</span>
           </>
         ));
+        const footer = archive
+          ? exit === 'Champion'
+            ? '🏆 Won the tournament'
+            : exit
+              ? `Went out in the ${exit}`
+              : ''
+          : isOut
+            ? "❌ Eliminated from WC '26"
+            : "🟢 Still alive in WC '26";
         const tipLines = [
           ...goalLines,
-          <span className="tip-foot">
-            {isOut ? "❌ Eliminated from WC '26" : "🟢 Still alive in WC '26"}
-          </span>,
+          ...(isWinner ? [<span className="tip-foot">👟 Golden Boot winner</span>] : []),
+          ...(footer ? [<span className="tip-foot">{footer}</span>] : []),
         ];
         return (
           <div className="scorer" key={`${row.name}-${row.teamAbbr}`}>
@@ -136,12 +158,30 @@ function LeaderboardPanel({
                 <span>
                   <span className="nm">{row.name}</span>{' '}
                   <span className="nat">{row.teamAbbr}</span>{' '}
-                  <span
-                    className="team-status"
-                    title={isOut ? "Eliminated from WC '26" : "Still alive in WC '26"}
-                  >
-                    {isOut ? '❌' : '🟢'}
-                  </span>
+                  {isWinner && (
+                    <span className="boot-crown" title="Golden Boot winner">🏆</span>
+                  )}{' '}
+                  {archive ? (
+                    exit && (
+                      <span
+                        className={
+                          exit === 'Champion'
+                            ? 'goal-round exit-champ'
+                            : `goal-round ${ROUND_CLASS[exit] ?? ''}`
+                        }
+                        title={footer}
+                      >
+                        {exitLabel(exit)}
+                      </span>
+                    )
+                  ) : (
+                    <span
+                      className="team-status"
+                      title={isOut ? "Eliminated from WC '26" : "Still alive in WC '26"}
+                    >
+                      {isOut ? '❌' : '🟢'}
+                    </span>
+                  )}
                 </span>
               </span>
             </Tooltip>
@@ -165,10 +205,14 @@ export function ScorersAndAssists({
   scorers,
   eliminated,
   allTime,
+  archive = false,
+  exitRounds,
 }: {
   scorers: ScorerRow[];
   eliminated: Set<string>;
   allTime: AllTimeRow[];
+  archive?: boolean;
+  exitRounds?: Map<string, string>;
 }) {
   if (scorers.length === 0) return null;
 
@@ -176,7 +220,9 @@ export function ScorersAndAssists({
     <>
       <div className="section-head" id="scorers">
         <h2>Golden Boot</h2>
-        <span className="sub">this World Cup &amp; all-time · goals</span>
+        <span className="sub">
+          {archive ? 'final · this World Cup & all-time' : 'this World Cup & all-time · goals'}
+        </span>
       </div>
       <div className="stack">
         <div className="sa-grid">
@@ -186,6 +232,8 @@ export function ScorersAndAssists({
             badgeClass="c-amber"
             rows={scorers}
             eliminated={eliminated}
+            archive={archive}
+            exitRounds={exitRounds}
           />
           <AllTimePanel rows={allTime} />
         </div>

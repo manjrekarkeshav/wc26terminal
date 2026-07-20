@@ -1,0 +1,9 @@
+{
+  "source": "Official FIFA World Cup 2026 individual awards",
+  "note": "Golden Boot is computed live from match events and is intentionally absent here. The remaining awards are not derivable from the ESPN scoreboard feed (no assists, lineups, goalkeeper stats or player ages), so they are recorded here. Any award left blank is hidden in the UI rather than guessed.",
+  "awards": {
+    "goldenBall": { "player": "Rodri", "code": "ESP", "detail": "Champion" },
+    "goldenGlove": { "player": "Unai Simón", "code": "ESP", "detail": "Champion" },
+    "bestYoungPlayer": { "player": "Pau Cubarsí", "code": "ESP", "detail": "Champion" }
+  }
+}

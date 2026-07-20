@@ -11,7 +11,7 @@ function matchesFilter(match: Match, team: string, location: string): boolean {
 
 const INITIAL_LIMIT = 6;
 
-export function RecentResults({ matches }: { matches: Match[] }) {
+export function RecentResults({ matches, archive = false }: { matches: Match[]; archive?: boolean }) {
   const { team, location } = useFilter();
   const [showAll, setShowAll] = useState(false);
 
@@ -25,8 +25,10 @@ export function RecentResults({ matches }: { matches: Match[] }) {
   return (
     <>
       <div className="section-head" id="results">
-        <h2>Recent results</h2>
-        <span className="sub">final</span>
+        <h2>{archive ? 'Results' : 'Recent results'}</h2>
+        <span className="sub">
+          {archive ? `all ${results.length} matches · final` : 'final'}
+        </span>
       </div>
       <div className="stack">
         <div className="results-grid">

@@ -326,6 +326,13 @@ html.light .show-all { background:#efe8d6; }
 }
 .tip-left { left:0; }
 .tip-right { right:0; }
+/* Long-form tooltip (e.g. the Summary switch): wrap instead of running off-screen,
+   and drop BELOW the trigger — it lives in the top bar, so opening upward would be
+   clipped by the top of the viewport. */
+.tip-mode {
+  white-space:normal; min-width:0; width:250px; max-width:calc(100vw - 20px);
+  top:calc(100% + 8px); bottom:auto;
+}
 .tip-wrap:hover .tip, .tip-wrap:focus-within .tip { display:flex; }
 .tip-line { display:block; }
 .tip .ab { color:var(--dim); }
@@ -551,6 +558,95 @@ html.light .to-bar { background:#ddd5c0; }
 @media (max-width:640px) {
   /* phones only: Title Odds stacks as a section directly below Happening Now */
   .top-split.has-side { display:block; }
+}
+
+/* ─── Archive mode: Champion hero, Podium, Recap ─────────────── */
+.champ-card { padding:1.1rem 1.15rem 1rem; border-color:var(--amber-dim); }
+.champ-top { display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; }
+.champ-trophy { font-size:1.5rem; line-height:1; }
+.champ-flag { font-size:1.9rem; line-height:1; }
+.champ-name { font-size:1.5rem; font-weight:700; letter-spacing:.01em; }
+.champ-name sup { font-size:.4em; }
+.champ-tag {
+  margin-left:auto; font-size:.6rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--amber); border:1px solid var(--amber-dim); border-radius:4px;
+  padding:.24rem .5rem; background:rgba(229,193,90,.1); white-space:nowrap;
+}
+.champ-score {
+  display:flex; align-items:center; gap:.6rem; margin-top:.9rem;
+  font-family:var(--mono); font-variant-numeric:tabular-nums;
+}
+.champ-score .cs-num { font-size:1.5rem; font-weight:700; }
+.champ-score .cs-dash { color:var(--dim); }
+.champ-score .cs-team { font-size:.8rem; color:var(--muted); letter-spacing:.06em; }
+.champ-score .cs-team.away { order:5; }
+.champ-foot { margin-top:.7rem; font-size:.76rem; color:var(--muted); }
+
+.podium-row .to-rk.medal { font-size:1rem; text-align:center; }
+.podium-lab {
+  margin-left:auto; padding-left:.5rem; font-size:.58rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--dim); white-space:nowrap;
+}
+
+.recap-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px; margin-bottom:14px;
+}
+.recap-stat {
+  background:var(--panel); border:1px solid var(--line2); border-radius:6px;
+  padding:.7rem .85rem; display:flex; flex-direction:column; gap:.3rem;
+}
+.recap-stat .rs-lab {
+  font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+}
+.recap-stat .rs-val { font-size:1.05rem; font-weight:700; }
+.recap-stat .rs-val.tnum { font-family:var(--mono); }
+
+/* awards + shocks sit side by side on desktop, stack on phones */
+.recap-cols {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:16px; align-items:start;
+}
+.recap-awards, .recap-shocks { margin-bottom:14px; }
+.award-row, .shock-row {
+  display:grid; align-items:center; gap:.6rem; padding:.55rem .85rem;
+  border-bottom:1px solid var(--line); font-size:.82rem;
+}
+.award-row { grid-template-columns:1.4rem minmax(90px,auto) 1fr auto; }
+.award-row:last-child, .shock-row:last-child { border-bottom:0; }
+.award-row .aw-icon { font-size:.95rem; }
+.award-row .aw-lab {
+  font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:var(--amber);
+  white-space:nowrap;
+}
+.award-row .aw-who { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.award-row .aw-who .nat { color:var(--dim); font-size:.7rem; }
+.award-row .aw-detail {
+  color:var(--muted); font-size:.74rem; white-space:nowrap; font-variant-numeric:tabular-nums;
+}
+.shock-row { grid-template-columns:auto 1fr auto; }
+.shock-row .sh-txt { color:var(--text); min-width:0; overflow:hidden; text-overflow:ellipsis; }
+.shock-row .sh-score {
+  font-family:var(--mono); color:var(--muted); font-size:.76rem; white-space:nowrap;
+}
+
+/* exit-round chip replacing the 🟢/❌ marker once the tournament is done — reuses the
+   .goal-round pill so the colors match the knockout bracket rounds */
+/* green so it reads as "won", distinct from the gold R32 / slate Group pills */
+.exit-champ {
+  color:var(--green); border-color:var(--green);
+  background:color-mix(in srgb, var(--green) 16%, transparent);
+}
+.boot-crown { font-size:.8rem; }
+
+/* top-bar Archive/Live switch sits with the status controls */
+.mode-toggle { margin-right:.2rem; }
+
+@media (max-width:640px) {
+  .champ-name { font-size:1.25rem; }
+  .champ-tag { margin-left:0; }
+  .award-row { grid-template-columns:1.2rem 1fr auto; }
+  .award-row .aw-lab { grid-column:1 / -1; order:-1; }
 }
 
 /* ─── Empty & Credit ─────────────────────────────────────────── */

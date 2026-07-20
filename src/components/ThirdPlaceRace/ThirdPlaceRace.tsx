@@ -18,15 +18,23 @@ function buildRaceRows(standings: GroupStanding[]): ThirdRow[] {
   });
 }
 
-export function ThirdPlaceRace({ standings }: { standings: GroupStanding[] }) {
+export function ThirdPlaceRace({
+  standings,
+  archive = false,
+}: {
+  standings: GroupStanding[];
+  archive?: boolean;
+}) {
   const rows = buildRaceRows(standings);
   if (rows.length === 0) return null;
 
   return (
     <>
       <div className="section-head">
-        <h2>3rd-place race</h2>
-        <span className="sub">8 of 12 advance to the Round of 32</span>
+        <h2>{archive ? '3rd-place standings' : '3rd-place race'}</h2>
+        <span className="sub">
+          {archive ? 'final · 8 of 12 reached the Round of 32' : '8 of 12 advance to the Round of 32'}
+        </span>
       </div>
       <div className="trace-wrap">
         <table className="trace">
@@ -67,8 +75,10 @@ export function ThirdPlaceRace({ standings }: { standings: GroupStanding[] }) {
           </tbody>
         </table>
         <p className="trace-note">
-          Ranked by FIFA criteria — points, goal difference, goals scored. Top 8 (green) advance to
-          the Round of 32. Provisional until all group games are played.
+          Ranked by FIFA criteria — points, goal difference, goals scored.{' '}
+          {archive
+            ? 'The top 8 (green) reached the Round of 32.'
+            : 'Top 8 (green) advance to the Round of 32. Provisional until all group games are played.'}
         </p>
       </div>
     </>
